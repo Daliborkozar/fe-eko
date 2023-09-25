@@ -37,33 +37,21 @@ const LegDiffLabel = styled(FormLabel)`
   width: max-content;
 `;
 
-const FeetForm = () => {
+const FeetForm = ({ control }) => {
     const currentDate = new Date();
 
-    const { handleSubmit, control } = useForm({
-        defaultValues: {
-          examinationdate: currentDate,
-          // ... other default values for your form fields
-        },
-      });
-  const [previewData, setPreviewData] = React.useState(null);
+   
 
-  console.log(previewData);
   const onlyNumbers = (value) => {
     // This regex will match only numbers (including decimal points)
     const regex = /^\d+(\.\d+)?$/;
     return regex.test(value);
   };
 
-  const onSubmit = (data) => {
-    setPreviewData(data);
-  };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={2} p={2}>
+    <>
+        <Grid container spacing={2} p={2}>
             {/* General Data */}
             <Grid item xs={12} md={4}>
               <StyledHeader variant="h6">General Data</StyledHeader>
@@ -116,7 +104,7 @@ const FeetForm = () => {
                 )}
               />
               <Controller
-                name="shoesize"
+                name="shoeSize"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -152,7 +140,7 @@ const FeetForm = () => {
             <Grid item xs={12} md={3}>
               <StyledHeader variant="h6">Left Foot</StyledHeader>
               <Controller
-                name="footlengthleft"
+                name="footLengthLeft"
                 control={control}
                 defaultValue=""
                 rules={{ validate: onlyNumbers }}
@@ -172,7 +160,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="footwidthleft"
+                name="footWidthLeft"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -186,7 +174,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="mladepthleft"
+                name="mlaDepthLeft"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -200,7 +188,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="tendonpositionleft"
+                name="tendonPositionLeft"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -213,7 +201,7 @@ const FeetForm = () => {
                 )}
               />
               <Controller
-                name="legAlignmentleft"
+                name="legAlignmentLeft"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -239,7 +227,7 @@ const FeetForm = () => {
             <Grid item xs={12} md={3}>
               <StyledHeader variant="h6">Right Foot</StyledHeader>
               <Controller
-                name="footlengthright"
+                name="footLengthRight"
                 control={control}
                 defaultValue=""
                 rules={{ validate: onlyNumbers }}
@@ -259,7 +247,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="footwidthright"
+                name="footWidthRight"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -273,7 +261,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="mladepthright"
+                name="mlaDepthRight"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -287,7 +275,7 @@ const FeetForm = () => {
               />
               <Controller
                 type="number"
-                name="tendonpositionl"
+                name="tendonPositionLeft"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
@@ -406,18 +394,8 @@ const FeetForm = () => {
               </LegDiffContainer>
             </Grid>
           </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}></Grid>
-            <Grid item xs={12} md={6}>
-              <Button variant="contained" color="primary" type="submit">
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </LocalizationProvider>
-  );
-};
+          </>
+       )
+}
 
 export default FeetForm;

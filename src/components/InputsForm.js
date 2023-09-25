@@ -49,7 +49,7 @@ const MyForm = ({ control }) => {
       <Grid item xs={12} md={6}>
         <StyledHeader variant="h6">General Data</StyledHeader>
         <Controller
-          name="firstname"
+          name="firstName"
           control={control}
           defaultValue=""
           rules={{
@@ -65,7 +65,7 @@ const MyForm = ({ control }) => {
           )}
         />
         <Controller
-          name="lastname"
+          name="lastName"
           control={control}
           defaultValue=""
           rules={{
@@ -200,7 +200,7 @@ const MyForm = ({ control }) => {
         />
        <Controller
           type="number"
-          name="shoesize"
+          name="shoeSize"
           control={control}
           defaultValue=""
           rules={{

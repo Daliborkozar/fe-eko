@@ -10,17 +10,15 @@ import FeetForm from './FeetForm';
 import { useForm, Controller } from 'react-hook-form';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { Overview } from './Overview';
 
 const steps = ['Patient general data', 'Feet measurement', 'Overview'];
 
 function StepperHorizontal() {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, watch } = useForm();
   const [activeStep, setActiveStep] = useState(0);
-  const [formData, setFormData] = useState({
-    // Initialize an object to store form data
-    personalData: null,
-    feetData: null,
-  });
+
+  const personalData = watch(); // Get all form data using watch()
 
   const handleNext = () => {
     // Perform form validation here if needed
@@ -33,13 +31,15 @@ function StepperHorizontal() {
   };
 
   const onSubmit = (data) => {
-    // Check if all mandatory fields have values or perform validation
-    console.log(data);
-
     if (activeStep === 0) {
-      setFormData({ ...formData, personalData: data });
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      // Form data from the first step
+      console.log('Personal Data:', data);
+    } else if (activeStep === 1) {
+      // Form data from the second step
+      console.log('Feet Data:', data);
     }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
@@ -48,7 +48,6 @@ function StepperHorizontal() {
 
   const handleReset = () => {
     setActiveStep(0);
-    setFormData({ personalData: null, feetData: null });
   };
 
   return (
@@ -88,6 +87,7 @@ function StepperHorizontal() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {activeStep === 0 && <MyForm control={control} />}
                 {activeStep === 1 && <FeetForm control={control} />}
+                {activeStep === 2 && <Overview personalData={personalData}/>}
                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                   <Button
                     color="inherit"
@@ -101,7 +101,7 @@ function StepperHorizontal() {
                   <Button
                     type="button"
                     onClick={handleNext}
-                    //disabled={!formData.personalData} // Disable Next if personalData is null
+                    // Enable Next for the "Overview" step
                   >
                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </Button>
