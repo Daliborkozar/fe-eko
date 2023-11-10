@@ -55,14 +55,17 @@ const MyForm = ({ control }) => {
           rules={{
             required: "First Name is required",
           }}
-          render={({ field, fieldState }) => (
-            <StyledInput
-              label="First Name"
-              fullWidth
-              {...field}
-              error={!!fieldState.error}
-            />
-          )}
+          render={({ field, fieldState }) => {
+            console.log(fieldState, "fieldState");
+            return (
+              <StyledInput
+                label="First Name*"
+                fullWidth
+                {...field}
+                error={fieldState?.invalid}
+              />
+            );
+          }}
         />
         <Controller
           name="lastName"
@@ -76,7 +79,7 @@ const MyForm = ({ control }) => {
               label="Last Name"
               fullWidth
               {...field}
-              error={!!fieldState.error}
+              //error={!!fieldState.error}
             />
           )}
         />
@@ -93,11 +96,10 @@ const MyForm = ({ control }) => {
               label="identity ID"
               fullWidth
               {...field}
-              error={!!fieldState.error}
+              //error={!!fieldState.error}
             />
           )}
         />
-
         <GenderContainer>
           <GenderLabel component="legend">Gender:</GenderLabel>
           <Controller
@@ -105,11 +107,11 @@ const MyForm = ({ control }) => {
             control={control}
             defaultValue=""
             rules={{
-                required: 'Please select a gender',
-              }}
-            render={({ field, fieldState}) => (
+              required: "Please select a gender",
+            }}
+            render={({ field, fieldState }) => (
               <FormControl component="fieldset">
-                <RadioGroup {...field} error={!!fieldState.error} row>
+                <RadioGroup {...field} row>
                   <FormControlLabel
                     value="male"
                     control={<Radio />}
@@ -127,35 +129,28 @@ const MyForm = ({ control }) => {
             )}
           />
         </GenderContainer>
-
         {/* Birth Date field */}
         <div style={{ display: "block" }}>
-        <Controller
-        name="birthdate"
-        control={control}
-        defaultValue={null} // Initialize the field with a default value
-        rules={{
-          required: 'Birth Date is required',
-        }}
-        render={({ field, fieldState }) => (
-          <FormControl fullWidth>
-            <DatePicker
-              value={field.value} // Bind DatePicker value to field.value
-              onChange={(date) => field.onChange(date)}
-              label="Birth Date"
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth
-                  
+          <Controller
+            name="birthdate"
+            control={control}
+            defaultValue={null} // Initialize the field with a default value
+            rules={{
+              required: "Birth Date is required",
+            }}
+            render={({ field, fieldState }) => (
+              <FormControl fullWidth>
+                <DatePicker
+                  value={field.value} // Bind DatePicker value to field.value
+                  onChange={(date) => field.onChange(date)}
+                  label="Birth Date"
+                  renderInput={(params) => <TextField {...params} fullWidth />}
                 />
-              )}
-            />
-          </FormControl>
-        )}
-      />
+              </FormControl>
+            )}
+          />
         </div>
-        {/* Add other general data fields here */}
+       
       </Grid>
       {/* Detail Data */}
       <Grid item xs={12} md={6}>
@@ -171,10 +166,7 @@ const MyForm = ({ control }) => {
               label="Height(mm)"
               fullWidth
               {...field}
-              error={!!fieldState.error}
-              helperText={
-                fieldState.error ? "Enter a valid height (e.g., 175)" : ""
-              }
+              //error={!!fieldState.error}
               style={{ marginBottom: "10px" }}
             />
           )}
@@ -185,7 +177,7 @@ const MyForm = ({ control }) => {
           control={control}
           defaultValue=""
           rules={{
-            required: 'Please enter weight',
+            required: "Please enter weight",
           }}
           render={({ field, fieldState }) => (
             <TextField
@@ -193,18 +185,17 @@ const MyForm = ({ control }) => {
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
-              error={!!fieldState.error}
-              
+              //error={!!fieldState.error}
             />
           )}
         />
-       <Controller
+        <Controller
           type="number"
           name="shoeSize"
           control={control}
           defaultValue=""
           rules={{
-            required: 'Please enter shoe size',
+            required: "Please enter shoe size",
           }}
           render={({ field, fieldState }) => (
             <TextField
@@ -212,8 +203,7 @@ const MyForm = ({ control }) => {
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
-              error={!!fieldState.error}
-              
+              //error={!!fieldState.error}
             />
           )}
         />

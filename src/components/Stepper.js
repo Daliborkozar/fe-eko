@@ -11,6 +11,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Overview } from './Overview';
+import Logo from '../assets/ekologo.png'
 
 const steps = ['Patient general data', 'Feet measurement', 'Overview'];
 
@@ -52,6 +53,7 @@ function StepperHorizontal() {
 
   return (
     <Box sx={{ width: '100%' }} p={10}>
+    <img src={Logo} alt="Your Image" style={{ maxWidth: '150px', height: 'auto' , marginBottom: '10px'}} />
       <Stepper
         activeStep={activeStep}
         sx={{

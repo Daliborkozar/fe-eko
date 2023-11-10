@@ -32,6 +32,10 @@ const OverviewSection = styled.div`
 
 const Overview = ({ personalData }) => {
 
+    const optimalnaDubinaLevo = (2/3 * personalData.footWidthLeft).toFixed(2)
+    const visinaSvodaLevo = (optimalnaDubinaLevo * 0.4).toFixed(2)
+    const fdxL = optimalnaDubinaLevo - personalData.mlaDepthLeft
+
     console.log(personalData, 'logged data')
   return (
     <OverviewContainer>
@@ -104,6 +108,52 @@ const Overview = ({ personalData }) => {
         <h2>Leg Length Difference and Footprint Split</h2>
         <p>
           <span>Leg Length Difference: </span>
+          <span>{personalData.legLengthDifference} mm</span>
+        </p>
+        <p>
+          <span>Selected Leg: </span>
+          <span>{personalData.selectedLeg}</span>
+        </p>
+        <p>
+          <span>Footprint Split (Left): </span>
+          <span>{personalData.leftFootprintSplit ? 'Yes' : 'No'}</span>
+        </p>
+        <p>
+          <span>Footprint Split (Right): </span>
+          <span>{personalData.rightFootprintSplit ? 'Yes' : 'No'}</span>
+        </p>
+      </OverviewSection>
+      <OverviewSection>
+        <h2>Ulozak leva noga</h2>
+        <p>
+          <span>Y [mm] (visina svoda): </span>
+          <span>{personalData.mlaDepthLeft * 0.4} mm</span>
+        </p>
+        <p>
+          <span>Xo [mm] (optimalna dubina): </span>
+          <span>{optimalnaDubinaLevo}mm</span>
+        </p>
+        <p>
+          <span>Yo [mm] (visina svoda): </span>
+          <span>{visinaSvodaLevo} mm</span>
+        </p>
+        <p>
+          <span>FDx [mm] (Spuštenost svoda po X osi u mm): </span>
+          <span>{fdxL}mm</span>
+        </p>
+        <p>
+          <span>Fdy [mm] (spuštenost svoda po Y osi u mm): </span>
+          <span>{(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4).toFixed(2)}mm</span>
+        </p>
+        <p>
+          <span>Spuštenost svoda u %: </span>
+          <span>{((fdxL / optimalnaDubinaLevo) * 100).toFixed(2)}%</span>
+        </p>
+      </OverviewSection>
+      <OverviewSection>
+        <h2>Ulozak desna noga</h2>
+        <p>
+          <span>Y [mm] (visina svoda): </span>
           <span>{personalData.legLengthDifference} mm</span>
         </p>
         <p>
