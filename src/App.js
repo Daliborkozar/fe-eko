@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage';
 import InputForm from './components/InputsForm';
 import { StepperHorizontal } from '../src/components/Stepper';
 import Report from './components/Report';
+import OverviewTable from './pages/OverviewTable'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/patient" element={<InputForm />} />
         <Route path="/stepper" element={<StepperHorizontal />} />
         <Route path="/report" element={<Report />} />
+        <Route path="/table" element={<OverviewTable />} />
       </Routes>
     </BrowserRouter>
   );
