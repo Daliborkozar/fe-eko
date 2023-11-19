@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
 import { useMemo } from 'react'
 import movies from '../MOVIE_DATA.json'
-import BasicTable from '../components/BasicTable'
+//import BasicTable from '../components/BasicTable'
+import GridTable from '../components/GridTable'
 
 function OverviewTable() {
   const data = useMemo(() => movies, [])
@@ -81,7 +82,7 @@ function OverviewTable() {
 
   return (
     <>
-      <BasicTable data={data} columns={movieColumns} />
+      <GridTable />
     </>
   )
 }
