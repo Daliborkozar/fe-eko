@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import Logo from '../assets/ekologo.png'
 import { setUser } from '../redux/userSlice';
+import axios from '../api/axios'
+import bcrypt from 'bcryptjs';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -43,9 +45,22 @@ const LoginPage = () => {
       watch,
       formState: { errors },
     } = useForm();
-    const onSubmit = (data) => {
-      dispatch(setUser(data));
-      // TODO backend for authentication
+
+    const onSubmit = async (data) => {
+      console.log(data)
+      try {
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+        const response = await axios.post('/login', {
+          username: data.username,
+          password: hashedPassword,
+        });
+        const token = response.data.token;
+    
+        
+      } catch (error) {
+        // TODO: Handle login error, display an error message, etc.
+        console.error('Login failed:', error);
+      }
     };
   
     return (
