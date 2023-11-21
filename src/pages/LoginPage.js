@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
 import Logo from '../assets/ekologo.png'
+import { setUser } from '../redux/userSlice';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -34,6 +36,7 @@ const FormContainer = styled.form`
 `;
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
     const {
       register,
       handleSubmit,

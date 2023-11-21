@@ -9,7 +9,6 @@ import {
   Box,
   Typography,
   Button,
-  Grid,
 } from "@mui/material";
 import levo11 from "../assets/levop11.png";
 import desnop11 from "../assets/desnop11.png";
