@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Link as MuiLink, IconButton} from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, IconButton} from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Logo from '../assets/ekologo.png';
 

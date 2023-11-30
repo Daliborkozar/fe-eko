@@ -3,7 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import { useQuery } from '@tanstack/react-query';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import axios from '../api/axios';
+//import axios from '../api/axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeactivateIcon from '@mui/icons-material/Block';
 import Dialog from '@mui/material/Dialog';
@@ -11,20 +11,29 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import { apiSlice } from "../redux/apiSlice";
+import { useGetAdminsQuery } from "./adminApiSlice";
+import Cookies from 'js-cookie';
 
-const fetchAdminData = async () => {
-  const response = await axios.get('/admin');
-  console.log(response);
-  return response.data; // Assuming the response structure is JSON
-};
 
-const OverviewTable = () => {
-  const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
+const AdminList = () => {
+    const {
+        data,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    } = useGetAdminsQuery()
+
+    console.log(data)
+  //const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
 
+  const storedToken = Cookies.get('jwt');
+  console.log(storedToken, 'storedtoken');
+  
+  
   const handleDelete = (rowData) => {
     setDeleteModalOpen(true);
     setSelectedRowData(rowData);
@@ -120,4 +129,4 @@ const OverviewTable = () => {
   );
 };
 
-export default OverviewTable;
+export default AdminList;
