@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import Logo from '../assets/ekologo.png'
-import { setUser } from '../redux/authSlice';
-import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom'
 import { useLoginMutation } from "../redux/authApiSlice";
 import { setCredentials } from "../redux/authSlice";

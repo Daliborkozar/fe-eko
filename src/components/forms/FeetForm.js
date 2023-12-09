@@ -1,14 +1,12 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import {
   TextField,
-  Button,
   Grid,
   Typography,
   FormControl,
   MenuItem,
   Select,
-  InputLabel,
   FormLabel,
   Checkbox,
   FormControlLabel,
@@ -18,10 +16,6 @@ import styled from "styled-components";
 
 const StyledHeader = styled(Typography)`
   margin-bottom: 15px;
-`;
-
-const StyledInput = styled(TextField)`
-  margin-bottom: 10px;
 `;
 
 const LegDiffContainer = styled.div`
@@ -62,6 +56,7 @@ const FeetForm = ({ control }) => {
                     <DatePicker
                       label="Examination Date"
                       value={field.value}
+                      format="dd/MM/yy"
                       onChange={(date) => field.onChange(date)}
                       renderInput={(params) => <TextField {...params} />}
                       style={{ marginBottom: "10px" }}

@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import MyForm from '../components/InputsForm';
-import FeetForm from './FeetForm';
-import { useForm, Controller } from 'react-hook-form';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { Overview } from './Overview';
+import React, { useState } from "react";
+import {
+  Box,
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Typography,
+} from "@mui/material";
+import FeetForm from "./FeetForm";
+import { useForm, Controller } from "react-hook-form";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Overview } from "./Overview";
+import PatientDataForm from "./PatientDataForm";
+import TherapyForm from "./TherapyForm";
 //import Logo from '../assets/ekologo.png'
 
-const steps = ['Patient general data', 'Feet measurement', 'Overview'];
+const steps = ["Patient general data", "Feet measurement", "Overview", "Therapy"];
 
 function StepperHorizontal() {
   const { handleSubmit, control, watch } = useForm();
@@ -32,12 +35,16 @@ function StepperHorizontal() {
   };
 
   const onSubmit = (data) => {
+    if (activeStep === steps.length) {
+      // Log form data only on the last step
+      console.log("Final Form Data:", data);
+    }
     if (activeStep === 0) {
       // Form data from the first step
-      console.log('Personal Data:', data);
+      console.log("Personal Data:", data);
     } else if (activeStep === 1) {
       // Form data from the second step
-      console.log('Feet Data:', data);
+      console.log("Feet Data:", data);
     }
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -51,14 +58,16 @@ function StepperHorizontal() {
     setActiveStep(0);
   };
 
+  console.log(personalData)
+
   return (
-    <Box sx={{ width: '100%' }} p={5}>
+    <Box sx={{ width: "100%" }} p={5}>
       <Stepper
         activeStep={activeStep}
         sx={{
-          width: '100%',
-          backgroundColor: '#f6f6f6',
-          borderRadius: '10px',
+          width: "100%",
+          backgroundColor: "#f6f6f6",
+          borderRadius: "10px",
         }}
       >
         {steps.map((label, index) => {
@@ -74,22 +83,24 @@ function StepperHorizontal() {
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
+            All steps completed - you&apos;re finished 
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
+          <Box sx={{ display: "flex", flexDirection: "row", pt: 2, justifyContent: 'center' }}>
+            
+            <Button onClick={handleReset} variant="contained">Open Report</Button>
+            <Button onClick={handleReset}>Back to patient list</Button>
+         </Box>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <div>
               <form onSubmit={handleSubmit(onSubmit)}>
-                {activeStep === 0 && <MyForm control={control} />}
+                {activeStep === 0 && <PatientDataForm control={control} />}
                 {activeStep === 1 && <FeetForm control={control} />}
-                {activeStep === 2 && <Overview personalData={personalData}/>}
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                {activeStep === 2 && <Overview personalData={personalData} />}
+                {activeStep === 3 && <TherapyForm control={control} personalData={personalData}/> }
+                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <Button
                     color="inherit"
                     disabled={activeStep === 0}
@@ -98,13 +109,13 @@ function StepperHorizontal() {
                   >
                     Back
                   </Button>
-                  <Box sx={{ flex: '1 1 auto' }} />
+                  <Box sx={{ flex: "1 1 auto" }} />
                   <Button
                     type="button"
                     onClick={handleNext}
                     // Enable Next for the "Overview" step
                   >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    {activeStep === steps.length - 1  ? "Finish" : "Next"}
                   </Button>
                 </Box>
               </form>

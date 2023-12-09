@@ -1,8 +1,7 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import {
   TextField,
-  Button,
   Grid,
   Typography,
   FormControl,
@@ -13,8 +12,6 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import styled from "styled-components";
 
 const GenderContainer = styled.div`
@@ -35,7 +32,7 @@ const StyledInput = styled(TextField)`
   margin-bottom: 10px;
 `;
 
-const MyForm = ({ control }) => {
+const PatientDataForm = ({ control }) => {
   //const { handleSubmit, control, formState, getValues, trigger } = useForm();
 
   const onlyNumbers = (value) => {
@@ -144,6 +141,7 @@ const MyForm = ({ control }) => {
                   value={field.value} // Bind DatePicker value to field.value
                   onChange={(date) => field.onChange(date)}
                   label="Birth Date"
+                  format="dd/MM/yy"
                   renderInput={(params) => <TextField {...params} fullWidth />}
                 />
               </FormControl>
@@ -225,4 +223,4 @@ const MyForm = ({ control }) => {
   );
 };
 
-export default MyForm;
+export default PatientDataForm;

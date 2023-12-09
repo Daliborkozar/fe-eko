@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   Table,
@@ -9,15 +9,17 @@ import {
   Box,
   Typography,
   Button,
+  TextField,
 } from "@mui/material";
 import levo11 from "../assets/levop11.png";
 import desnop11 from "../assets/desnop11.png";
 import PrintIcon from "@mui/icons-material/Print";
+import SendIcon from "@mui/icons-material/Send";
 
 const imgStyle = {
-  width: "200px",
-  height: "500px", // Ensures original aspect ratio
-  marginRight: "20px", // Adjust this margin as needed
+  width: "180px",
+  height: "450px", // Ensures original aspect ratio
+  //marginRight: "20px", // Adjust this margin as needed
 };
 
 const data = {
@@ -79,6 +81,10 @@ const StyledMainTitle = styled(Box)`
   width: 100%;
 `;
 
+const StyledTable = styled(Table)`
+  max-width: 500;
+`;
+
 const PrintButton = styled(Button)`
   @media print {
     display: none; /* Hide the button when printing */
@@ -86,19 +92,58 @@ const PrintButton = styled(Button)`
 `;
 
 const Report = () => {
+  const [serialNumber, setSerialNumber] = useState("");
 
-    function handlePrint() {
-        window.print();
-      }
-      
+  const handleSendData = () => {
+    // Add logic to send data to API using serialNumber
+    console.log("Sending data...", serialNumber);
+  };
+
+  function handlePrint() {
+    window.print();
+  }
+
   return (
     <Wrapper>
       <TableContainer component={Paper} elevation={0}>
-        <Box sx={{ display: "flex", justifyContent: "flex-end" , marginRight: '15px','@media print': {
-        display: 'none', // Hide during print
-      }}}>
-          <PrintButton variant="contained" color="primary" startIcon={<PrintIcon />} onClick={handlePrint}>
-            Stampaj
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "5px",
+            marginRight: "15px",
+            "@media print": {
+              display: "none", // Hide during print
+            },
+          }}
+        >
+          <TextField
+            label="Serial Number"
+            type="number"
+            value={serialNumber}
+            onChange={(e) => setSerialNumber(e.target.value)}
+            //variant="outlined"
+            size="small"
+            style={{ marginRight: "10px" }}
+          />
+          <Button
+            style={{ marginRight: "10px" }}
+            variant="contained"
+            color="primary"
+            startIcon={<SendIcon />}
+            onClick={handleSendData}
+            size="small"
+          >
+            Update serial number
+          </Button>
+          <PrintButton
+            variant="contained"
+            color="primary"
+            startIcon={<PrintIcon />}
+            onClick={handlePrint}
+            size="small"
+          >
+            Print
           </PrintButton>
         </Box>
         <Box align="center">
@@ -119,7 +164,11 @@ const Report = () => {
           Date: <strong>5/31/2021</strong>
         </Typography>
 
-        <Table size="small" sx={{ maxWidth: 650 }} align="center">
+        <Table
+              size="small"
+              sx={{ maxWidth: 450, marginBottom: 1 }}
+              align="center"
+            >
           <TableRow>
             <NoBorderCell align="left">
               <BoldWrapper>Ekovel ID:</BoldWrapper> 54678
@@ -161,7 +210,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ minWidth: 650, marginBottom: 2 }}
+              sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
               <TableRow>
@@ -190,7 +239,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ minWidth: 650, marginBottom: 2 }}
+              sx={{ minWidth: 450, marginBottom: 1 }}
               align="center"
             >
               <TableRow>
@@ -266,7 +315,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ minWidth: 650, marginBottom: 2 }}
+              sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
               <TableRow>
@@ -315,7 +364,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ minWidth: 650, marginBottom: 2 }}
+              sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
               <TableRow>
