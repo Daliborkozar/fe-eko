@@ -30,9 +30,6 @@ const LegDiffLabel = styled(FormLabel)`
 `;
 
 const FeetForm = ({ control }) => {
-    const currentDate = new Date();
-
-   
 
   const onlyNumbers = (value) => {
     // This regex will match only numbers (including decimal points)

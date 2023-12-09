@@ -22,32 +22,6 @@ const imgStyle = {
   //marginRight: "20px", // Adjust this margin as needed
 };
 
-const data = {
-  firstName: "Dalibor",
-  lastName: "Kozar",
-  id: "12345678",
-  gender: "male",
-  birthdate: "2023-11-15T23:00:00.000Z",
-  height: "182",
-  weight: "67",
-  shoeSize: "43",
-  handPreference: "right",
-  examinationdate: "2023-11-11T15:22:26.108Z",
-  footLengthLeft: "145",
-  footWidthLeft: "232",
-  mlaDepthLeft: "2",
-  tendonPositionLeft: "2",
-  legAlignmentLeft: "valgus",
-  footLengthRight: "234",
-  footWidthRight: "33",
-  mlaDepthRight: "33",
-  tendonPositionRight: "22",
-  legAlignmentRight: "varus",
-  legLengthDifference: "1",
-  selectedLeg: "",
-  leftFootprintSplit: false,
-  rightFootprintSplit: true,
-};
 
 const Wrapper = styled.div`
   background: none;
@@ -81,9 +55,6 @@ const StyledMainTitle = styled(Box)`
   width: 100%;
 `;
 
-const StyledTable = styled(Table)`
-  max-width: 500;
-`;
 
 const PrintButton = styled(Button)`
   @media print {
@@ -151,7 +122,7 @@ const Report = () => {
             src="http://www.algodesk.com/ekosoft/images/print_exam/company-branch-logo.png"
             width="240"
             height="84"
-            alt="logo"
+            alt="logoinreport"
           />
         </Box>
         <StyledMainTitle>

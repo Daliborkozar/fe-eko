@@ -17,9 +17,9 @@ const AdminList = () => {
     const {
         data,
         isLoading,
-        isSuccess,
+        // isSuccess,
         isError,
-        error
+        // error
     } = useGetAdminsQuery()
 
     console.log(data)

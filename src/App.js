@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Outlet, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import InputForm from './components/forms/PatientDataForm';
 import { StepperHorizontal } from './components/forms/Stepper';

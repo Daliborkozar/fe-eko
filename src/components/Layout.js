@@ -10,7 +10,7 @@ const Layout = () => {
      <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={Logo} alt="Your Image" style={{ maxWidth: '150px', height: 'auto', marginBottom: '10px' }} />
+          <img src={Logo} alt="logo from app bar" style={{ maxWidth: '150px', height: 'auto', marginBottom: '10px' }} />
           
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
