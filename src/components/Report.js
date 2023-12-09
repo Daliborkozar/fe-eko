@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 const NoBorderCell = styled(TableCell)`
   &&&.MuiTableCell-root {
     border: none;
+    padding: 2px 1px;
   }
 `;
 
@@ -45,6 +46,12 @@ const StyledMidTitle = styled(Box)`
   text-align: center;
   color: #006633;
 `;
+
+const StyledTableRow = styled(TableRow)`
+ .MuiTableRow-root {
+  padding: 0;
+ }
+`
 
 const StyledMainTitle = styled(Box)`
   border-top: 2px solid #006633;
@@ -184,24 +191,24 @@ const Report = () => {
               sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
-              <TableRow>
+              <StyledTableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Height [cm]</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="left">180</NoBorderCell>
-              </TableRow>
-              <TableRow>
+              </StyledTableRow>
+              <StyledTableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Weight [kg]</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="left">76</NoBorderCell>
-              </TableRow>
-              <TableRow>
+              </StyledTableRow>
+              <StyledTableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Optimal weight [kg]</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="leftr">78</NoBorderCell>
-              </TableRow>
+              </StyledTableRow>
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -246,7 +253,7 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
+                <NoBorderCell align="center">Medial arch height Y [mm]</NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
@@ -255,7 +262,7 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
+                <NoBorderCell align="center">Bending degree of the tendon</NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
@@ -264,18 +271,18 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
+                <NoBorderCell align="center">Medial arch optimal depth Xo [mm</NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
+                  <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
+                <NoBorderCell align="center">	Medial arch optimal height Yo [mm]</NoBorderCell>
                 <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
+                  <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
             </Table>
@@ -291,40 +298,40 @@ const Report = () => {
             >
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>275</BoldWrapper>
+                  <BoldWrapper>24</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot length L [mm]</NoBorderCell>
+                <NoBorderCell align="center">Horizontal displacement FDx [mm</NoBorderCell>
                 <NoBorderCell align="left">
-                  <BoldWrapper>276</BoldWrapper>
-                </NoBorderCell>
-              </TableRow>
-              <TableRow>
-                <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
-                </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
-                <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
+                  <BoldWrapper>26</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>22</BoldWrapper>
+                  <BoldWrapper>10</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">Vertical displacement FDy [mm]</NoBorderCell>
+                <NoBorderCell align="left">
+                  <BoldWrapper>11</BoldWrapper>
+                </NoBorderCell>
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="left">
+                  <BoldWrapper>91</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="center">
-                  Medial arch depth X [mm]
+                Displacement percentage [%]
                 </NoBorderCell>
                 <NoBorderCell align="left">
-                  <BoldWrapper>22</BoldWrapper>
+                  <BoldWrapper>100</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
+                  <BoldWrapper>IV</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
+                <NoBorderCell align="center">Displacement level</NoBorderCell>
                 <NoBorderCell align="left">
-                  <BoldWrapper>23</BoldWrapper>
+                  <BoldWrapper>IV</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
             </Table>
@@ -342,19 +349,72 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>EU shoe size</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="left">43</NoBorderCell>
+                <NoBorderCell align="center">22</NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>Weight [kg]</BoldWrapper>
+                  <BoldWrapper>Ekovel Step Correct size</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="left">76</NoBorderCell>
+                <NoBorderCell align="center">24-25</NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="left">
-                  <BoldWrapper>Optimal weight [kg]</BoldWrapper>
+                  <BoldWrapper>Initial height IY [mm]</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="leftr">78</NoBorderCell>
+                <NoBorderCell align="center">12</NoBorderCell>
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="left">
+                  <BoldWrapper>Optimal height OY [mm]</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">15</NoBorderCell>
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="left">
+                  <BoldWrapper>Adjustment period [weeks]</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">1</NoBorderCell>
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="left">
+                  <BoldWrapper>Therapy duration [weeks]</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">12</NoBorderCell>
+              </TableRow>
+              
+            </Table>
+            <StyledMidTitle>
+              <Typography>
+                <strong>CONTROL EXAM SCHEDULE</strong>
+              </Typography>
+            </StyledMidTitle>
+            <Table>
+            <TableRow>
+                <NoBorderCell align="right">
+                  <BoldWrapper>1.</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">
+                  12/12/2024
+                </NoBorderCell>
+                
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="right">
+                  <BoldWrapper>2.</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">
+                  12/12/2024
+                </NoBorderCell>
+                
+              </TableRow>
+              <TableRow>
+                <NoBorderCell align="right">
+                  <BoldWrapper>3.</BoldWrapper>
+                </NoBorderCell>
+                <NoBorderCell align="center">
+                  12/12/2024
+                </NoBorderCell>
+                
               </TableRow>
             </Table>
           </Box>
