@@ -271,7 +271,7 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Medial arch optimal depth Xo [mm</NoBorderCell>
+                <NoBorderCell align="center">Medial arch optimal depth Xo [mm]</NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
