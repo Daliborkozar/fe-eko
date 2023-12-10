@@ -17,6 +17,7 @@ import { addMonthsAndAdjustWeekend } from "../../utils/addMonths";
 import {
   findClosestObject,
   velicinaUloskaData,
+  findRange,
 } from "../../utils/velicinaUlozka";
 
 const TableContainer = styled.div`
@@ -77,6 +78,8 @@ const TherapyForm = ({ control, personalData }) => {
   //   const regex = /^\d+(\.\d+)?$/;
   //   return regex.test(value);
   // };
+
+  console.log(personalData)
   const checkDateTable1 =
     addMonthsAndAdjustWeekend(2).toLocaleDateString("en-GB");
   const checkDateTable2 =
@@ -85,7 +88,8 @@ const TherapyForm = ({ control, personalData }) => {
   const checkDateTable3 =
     addMonthsAndAdjustWeekend(6).toLocaleDateString("en-GB");
 
-  const ulozakData = findClosestObject(personalData.shoeSize);
+  const ulozakData = findRange(personalData.footLengthLeft, personalData.footLengthRight);
+  console.log(ulozakData)
   const defaultRange = ulozakData?.range;
   return (
     <>
