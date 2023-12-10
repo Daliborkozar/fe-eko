@@ -300,7 +300,7 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>24</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Horizontal displacement FDx [mm</NoBorderCell>
+                <NoBorderCell align="center">Horizontal displacement FDx [mm]</NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>26</BoldWrapper>
                 </NoBorderCell>
