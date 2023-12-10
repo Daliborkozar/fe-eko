@@ -13,23 +13,6 @@ const velicinaUloskaData = [
   { range: "46-48", min: 306.5, avg: 313, max: 319.5,initialHeight: 15, finalHeight: 20 },
 ];
 
-const ulozakConfig = [
-  { min: 156, max: 169, number: 24 },
-  { min: 169, max: 189.5, number: 26 },
-  { min: 189.5, max: 202.5, number: 28 },
-  { min: 202.5, max: 215.5, number: 30 },
-  { min: 156, max: 169, number: 32 },
-  { min: 156, max: 169, number: 34 },
-  { min: 156, max: 169, number: 35 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-  { min: 156, max: 169, number: 24 },
-];
-
 const findClosestObject = (number) => {
   // Assuming velicinaUloskaData is the array of objects
   const sortedData = velicinaUloskaData.sort((a, b) => {

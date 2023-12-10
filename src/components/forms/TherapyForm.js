@@ -15,7 +15,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 import { addMonthsAndAdjustWeekend } from "../../utils/addMonths";
 import {
-  findClosestObject,
   velicinaUloskaData,
   findRange,
 } from "../../utils/velicinaUlozka";
@@ -89,7 +88,6 @@ const TherapyForm = ({ control, personalData }) => {
     addMonthsAndAdjustWeekend(6).toLocaleDateString("en-GB");
 
   const ulozakData = findRange(personalData.footLengthLeft, personalData.footLengthRight);
-  console.log(ulozakData)
   const defaultRange = ulozakData?.range;
   return (
     <>
