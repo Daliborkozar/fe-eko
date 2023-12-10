@@ -15,13 +15,13 @@ import levo11 from "../assets/levop11.png";
 import desnop11 from "../assets/desnop11.png";
 import PrintIcon from "@mui/icons-material/Print";
 import SendIcon from "@mui/icons-material/Send";
+import Logo from "../assets/ekologo.png";
 
 const imgStyle = {
   width: "180px",
   height: "450px", // Ensures original aspect ratio
   //marginRight: "20px", // Adjust this margin as needed
 };
-
 
 const Wrapper = styled.div`
   background: none;
@@ -47,12 +47,6 @@ const StyledMidTitle = styled(Box)`
   color: #006633;
 `;
 
-const StyledTableRow = styled(TableRow)`
- .MuiTableRow-root {
-  padding: 0;
- }
-`
-
 const StyledMainTitle = styled(Box)`
   border-top: 2px solid #006633;
   border-bottom: 2px solid #006633;
@@ -61,7 +55,6 @@ const StyledMainTitle = styled(Box)`
   color: #006633;
   width: 100%;
 `;
-
 
 const PrintButton = styled(Button)`
   @media print {
@@ -125,12 +118,7 @@ const Report = () => {
           </PrintButton>
         </Box>
         <Box align="center">
-          <img
-            src="http://www.algodesk.com/ekosoft/images/print_exam/company-branch-logo.png"
-            width="240"
-            height="84"
-            alt="logoinreport"
-          />
+          <img src={Logo} width="240" height="84" alt="logoinreport" />
         </Box>
         <StyledMainTitle>
           <Typography>
@@ -143,10 +131,10 @@ const Report = () => {
         </Typography>
 
         <Table
-              size="small"
-              sx={{ maxWidth: 450, marginBottom: 1 }}
-              align="center"
-            >
+          size="small"
+          sx={{ maxWidth: 450, marginBottom: 1 }}
+          align="center"
+        >
           <TableRow>
             <NoBorderCell align="left">
               <BoldWrapper>Ekovel ID:</BoldWrapper> 54678
@@ -167,7 +155,7 @@ const Report = () => {
             <NoBorderCell align="left">
               <BoldWrapper>Date Of Birth:</BoldWrapper> 03/04/1979
             </NoBorderCell>
-            <NoBorderCell align="leftr">
+            <NoBorderCell align="left">
               <BoldWrapper>City:</BoldWrapper> Zemun
             </NoBorderCell>
           </TableRow>
@@ -191,24 +179,24 @@ const Report = () => {
               sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
-              <StyledTableRow>
+              <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Height [cm]</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="left">180</NoBorderCell>
-              </StyledTableRow>
-              <StyledTableRow>
+              </TableRow>
+              <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Weight [kg]</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="left">76</NoBorderCell>
-              </StyledTableRow>
-              <StyledTableRow>
+              </TableRow>
+              <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Optimal weight [kg]</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="leftr">78</NoBorderCell>
-              </StyledTableRow>
+                <NoBorderCell align="left">78</NoBorderCell>
+              </TableRow>
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -253,7 +241,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Medial arch height Y [mm]</NoBorderCell>
+                <NoBorderCell align="center">
+                  Medial arch height Y [mm]
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
@@ -262,7 +252,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Bending degree of the tendon</NoBorderCell>
+                <NoBorderCell align="center">
+                  Bending degree of the tendon
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
@@ -271,7 +263,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Medial arch optimal depth Xo [mm]</NoBorderCell>
+                <NoBorderCell align="center">
+                  Medial arch optimal depth Xo [mm]
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>23</BoldWrapper>
                 </NoBorderCell>
@@ -280,7 +274,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">	Medial arch optimal height Yo [mm]</NoBorderCell>
+                <NoBorderCell align="center">
+                  Medial arch optimal height Yo [mm]
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
@@ -300,7 +296,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>24</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Horizontal displacement FDx [mm]</NoBorderCell>
+                <NoBorderCell align="center">
+                  Horizontal displacement FDx [mm]
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>26</BoldWrapper>
                 </NoBorderCell>
@@ -309,7 +307,9 @@ const Report = () => {
                 <NoBorderCell align="left">
                   <BoldWrapper>10</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">Vertical displacement FDy [mm]</NoBorderCell>
+                <NoBorderCell align="center">
+                  Vertical displacement FDy [mm]
+                </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
@@ -319,7 +319,7 @@ const Report = () => {
                   <BoldWrapper>91</BoldWrapper>
                 </NoBorderCell>
                 <NoBorderCell align="center">
-                Displacement percentage [%]
+                  Displacement percentage [%]
                 </NoBorderCell>
                 <NoBorderCell align="left">
                   <BoldWrapper>100</BoldWrapper>
@@ -381,7 +381,6 @@ const Report = () => {
                 </NoBorderCell>
                 <NoBorderCell align="center">12</NoBorderCell>
               </TableRow>
-              
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -389,38 +388,28 @@ const Report = () => {
               </Typography>
             </StyledMidTitle>
             <Table>
-            <TableRow>
+              <TableRow>
                 <NoBorderCell align="right">
                   <BoldWrapper>1.</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">
-                  12/12/2024
-                </NoBorderCell>
-                
+                <NoBorderCell align="center">12/12/2024</NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="right">
                   <BoldWrapper>2.</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">
-                  12/12/2024
-                </NoBorderCell>
-                
+                <NoBorderCell align="center">12/12/2024</NoBorderCell>
               </TableRow>
               <TableRow>
                 <NoBorderCell align="right">
                   <BoldWrapper>3.</BoldWrapper>
                 </NoBorderCell>
-                <NoBorderCell align="center">
-                  12/12/2024
-                </NoBorderCell>
-                
+                <NoBorderCell align="center">12/12/2024</NoBorderCell>
               </TableRow>
             </Table>
           </Box>
           <img src={desnop11} style={imgStyle} alt="logo" />
         </Box>
-        {/* Other tables and their content using Material-UI components */}
       </TableContainer>
     </Wrapper>
   );
