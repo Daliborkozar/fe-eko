@@ -10,6 +10,7 @@ import {
   Typography,
   Button,
   TextField,
+  TableBody,
 } from "@mui/material";
 import levo11 from "../assets/levop11.png";
 import desnop11 from "../assets/desnop11.png";
@@ -135,6 +136,7 @@ const Report = () => {
           sx={{ maxWidth: 450, marginBottom: 1 }}
           align="center"
         >
+           <TableBody>
           <TableRow>
             <NoBorderCell align="left">
               <BoldWrapper>Ekovel ID:</BoldWrapper> 54678
@@ -159,6 +161,7 @@ const Report = () => {
               <BoldWrapper>City:</BoldWrapper> Zemun
             </NoBorderCell>
           </TableRow>
+          </TableBody>
         </Table>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img src={levo11} style={imgStyle} alt="logo" />
@@ -179,6 +182,7 @@ const Report = () => {
               sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
+              <TableBody>
               <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>Height [cm]</BoldWrapper>
@@ -197,6 +201,7 @@ const Report = () => {
                 </NoBorderCell>
                 <NoBorderCell align="left">78</NoBorderCell>
               </TableRow>
+              </TableBody>
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -208,6 +213,7 @@ const Report = () => {
               sx={{ minWidth: 450, marginBottom: 1 }}
               align="center"
             >
+              <TableBody>
               <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>275</BoldWrapper>
@@ -281,6 +287,7 @@ const Report = () => {
                   <BoldWrapper>11</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
+              </TableBody>
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -292,6 +299,7 @@ const Report = () => {
               sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
+              <TableBody>
               <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>24</BoldWrapper>
@@ -334,6 +342,7 @@ const Report = () => {
                   <BoldWrapper>IV</BoldWrapper>
                 </NoBorderCell>
               </TableRow>
+              </TableBody>
             </Table>
             <StyledMidTitle>
               <Typography>
@@ -345,6 +354,7 @@ const Report = () => {
               sx={{ maxWidth: 450, marginBottom: 1 }}
               align="center"
             >
+              <TableBody>
               <TableRow>
                 <NoBorderCell align="left">
                   <BoldWrapper>EU shoe size</BoldWrapper>
@@ -381,13 +391,17 @@ const Report = () => {
                 </NoBorderCell>
                 <NoBorderCell align="center">12</NoBorderCell>
               </TableRow>
+              </TableBody>
             </Table>
             <StyledMidTitle>
               <Typography>
                 <strong>CONTROL EXAM SCHEDULE</strong>
               </Typography>
             </StyledMidTitle>
-            <Table>
+            <Table size="small"
+              sx={{ maxWidth: 450, marginBottom: 1 }}
+              align="center">
+                <TableBody>
               <TableRow>
                 <NoBorderCell align="right">
                   <BoldWrapper>1.</BoldWrapper>
@@ -406,6 +420,7 @@ const Report = () => {
                 </NoBorderCell>
                 <NoBorderCell align="center">12/12/2024</NoBorderCell>
               </TableRow>
+              </TableBody>
             </Table>
           </Box>
           <img src={desnop11} style={imgStyle} alt="logo" />
