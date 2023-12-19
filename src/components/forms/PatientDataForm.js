@@ -84,9 +84,6 @@ const PatientDataForm = ({ control }) => {
           name="id"
           control={control}
           defaultValue=""
-          rules={{
-            required: "ID is required",
-          }}
           render={({ field, fieldState }) => (
             <StyledInput
               type="number"
