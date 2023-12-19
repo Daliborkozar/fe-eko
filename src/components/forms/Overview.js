@@ -39,13 +39,13 @@ const Overview = ({ personalData }) => {
   const mlaDescendingLevelLeft = (2 * personalData.footWidthLeft) / 15;
   const mlaDescendingLevelRight = (2 * personalData.footWidthRight) / 15;
   const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
-  const optimalnaDubinaDesno = ((2 / 3) * personalData.footWidthRight).toFixed(
-    2
-  );
+  const optimalnaDubinaDesno = ((2 / 3) * personalData.footWidthRight).toFixed(2);
   const visinaSvodaLevo = (optimalnaDubinaLevo * 0.4).toFixed(2);
   const visinaSvodaDesno = (optimalnaDubinaDesno * 0.4).toFixed(2);
-  const fdxL = Math.ceil(optimalnaDubinaLevo - personalData.mlaDepthLeft);
-  const fdxD = Math.ceil(optimalnaDubinaDesno - personalData.mlaDepthRight);
+  const fdxL = Math.round(optimalnaDubinaLevo - personalData.mlaDepthLeft);
+  const fdxD = optimalnaDubinaDesno - personalData.mlaDepthRight
+  const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)
+  const fdyD = Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4)
 
   const mlaEvelLeft = determineClosestStepen(mlaDescendingLevelLeft, fdxL);
   const mlaEvelRight = determineClosestStepen(mlaDescendingLevelRight, fdxD);
@@ -127,25 +127,25 @@ const Overview = ({ personalData }) => {
         <h2>Foot Parameters Left</h2>
         <p>
           <span>Optimal MLA Depth (mm): </span>
-          <span>{Math.ceil(optimalnaDubinaLevo)}mm</span>
+          <span>{Math.round(optimalnaDubinaLevo)}mm</span>
         </p>
         <p>
           <span>Optimal MLA Height (mm): </span>
-          <span>{Math.ceil(visinaSvodaLevo)} mm</span>
+          <span>{Math.round(visinaSvodaLevo)} mm</span>
         </p>
         <p>
           <span>FDx [mm] (Spuštenost svoda po X osi u mm): </span>
-          <span>{Math.ceil(fdxL)}mm</span>
+          <span>{Math.round(fdxL)}mm</span>
         </p>
         <p>
           <span>Fdy [mm] (spuštenost svoda po Y osi u mm): </span>
           <span>
-            {Math.ceil(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)}mm
+            {Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)}mm
           </span>
         </p>
         <p>
           <span>MLA Descending: </span>
-          <span>{Math.ceil((fdxL / optimalnaDubinaLevo) * 100)}%</span>
+          <span>{Math.round((fdyL / optimalnaDubinaLevo) * 100)}%</span>
         </p>
         {/* <p>
           <span>Y [mm] (visina svoda): </span>
@@ -160,25 +160,25 @@ const Overview = ({ personalData }) => {
         <h2>Foot Parameters Right</h2>
         <p>
           <span>Optimal MLA Depth (mm):</span>
-          <span>{Math.ceil(optimalnaDubinaDesno)}mm</span>
+          <span>{Math.round(optimalnaDubinaDesno)}mm</span>
         </p>
         <p>
           <span>Optimal MLA Height (mm):</span>
-          <span>{Math.ceil(visinaSvodaDesno)} mm</span>
+          <span>{Math.round(visinaSvodaDesno)} mm</span>
         </p>
         <p>
           <span>FDx [mm] (Spuštenost svoda po X osi u mm): </span>
-          <span>{Math.ceil(fdxD)}mm</span>
+          <span>{Math.round(fdxD)}mm</span>
         </p>
         <p>
           <span>Fdy [mm] (spuštenost svoda po Y osi u mm): </span>
           <span>
-            {Math.ceil(visinaSvodaDesno - personalData.mlaDepthRight * 0.4)}mm
+            {Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4)}mm
           </span>
         </p>
         <p>
           <span>MLA Descending: </span>
-          <span>{Math.ceil((fdxD / optimalnaDubinaDesno) * 100)}%</span>
+          <span>{Math.round((fdyD / optimalnaDubinaDesno) * 100)}%</span>
         </p>
         {/* <p>
           <span>Y [mm] (visina svoda): </span>
