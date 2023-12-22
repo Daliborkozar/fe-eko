@@ -56,7 +56,7 @@ const PatientDataForm = ({ control }) => {
           control={control}
           defaultValue=""
           rules={{
-            required: "First Name is required",
+            required: t('firstNameRequired'),
           }}
           render={({ field, fieldState }) => {
             console.log(fieldState, "fieldState");

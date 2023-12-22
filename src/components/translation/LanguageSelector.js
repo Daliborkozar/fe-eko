@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();

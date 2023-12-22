@@ -1,5 +1,6 @@
 const translationEN = {
-    welcome: "Welcome to my app"
+    welcome: "Welcome to my app",
+    firstNameRequired: 'First Name is required'
 }
 
 
