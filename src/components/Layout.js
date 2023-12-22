@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import LanguageSelector from './translation/LanguageSelector';
 import { AppBar, Toolbar, Typography, IconButton} from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Logo from '../assets/ekologo.png';
@@ -27,6 +28,7 @@ const Layout = () => {
           >
             <AccountCircle />
           </IconButton>
+          <LanguageSelector />
         </div>
       </Toolbar>
     </AppBar>

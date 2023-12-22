@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Stepper,
@@ -21,6 +22,7 @@ const steps = ["Patient general data", "Feet measurement", "Overview", "Therapy"
 function StepperHorizontal() {
   const { handleSubmit, control, watch } = useForm();
   const [activeStep, setActiveStep] = useState(0);
+  const navigate = useNavigate();
 
   const personalData = watch(); // Get all form data using watch()
 
@@ -58,6 +60,10 @@ function StepperHorizontal() {
     setActiveStep(0);
   };
 
+  const handleOpenReport =  () => {
+      navigate('/report')
+  }
+
   console.log(personalData)
 
   return (
@@ -87,7 +93,7 @@ function StepperHorizontal() {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2, justifyContent: 'center' }}>
             
-            <Button onClick={handleReset} variant="contained">Open Report</Button>
+            <Button onClick={handleOpenReport} variant="contained">Open Report</Button>
             <Button onClick={handleReset}>Back to patient list</Button>
          </Box>
         </React.Fragment>

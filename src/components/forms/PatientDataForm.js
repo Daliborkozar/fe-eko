@@ -10,15 +10,21 @@ import {
   Radio,
   FormLabel,
   FormControlLabel,
+  FormHelperText,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
+import { useTranslation } from 'react-i18next';
 
 const GenderContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 `;
+
+const StyledError = styled(FormHelperText)`
+  color: red;
+`
 
 const GenderLabel = styled(FormLabel)`
   margin-right: 20px;
@@ -34,7 +40,7 @@ const StyledInput = styled(TextField)`
 
 const PatientDataForm = ({ control }) => {
   //const { handleSubmit, control, formState, getValues, trigger } = useForm();
-
+  const { t } = useTranslation();
   const onlyNumbers = (value) => {
     const regex = /^\d+(\.\d+)?$/;
     return regex.test(value);
@@ -76,7 +82,7 @@ const PatientDataForm = ({ control }) => {
               label="Last Name"
               fullWidth
               {...field}
-              //error={!!fieldState.error}
+              error={fieldState?.invalid}
             />
           )}
         />
@@ -90,7 +96,7 @@ const PatientDataForm = ({ control }) => {
               label="identity ID"
               fullWidth
               {...field}
-              //error={!!fieldState.error}
+              //error={fieldState?.invalid}
             />
           )}
         />
@@ -119,6 +125,8 @@ const PatientDataForm = ({ control }) => {
                     style={{ flex: 1 }}
                   />
                 </RadioGroup>
+                {fieldState?.invalid && <StyledError>{fieldState?.error?.message}</StyledError>}
+  
               </FormControl>
             )}
           />
@@ -141,6 +149,7 @@ const PatientDataForm = ({ control }) => {
                   format="dd/MM/yy"
                   renderInput={(params) => <TextField {...params} fullWidth />}
                 />
+                {fieldState?.invalid && <StyledError>{fieldState?.error?.message}</StyledError>}
               </FormControl>
             )}
           />
@@ -161,7 +170,7 @@ const PatientDataForm = ({ control }) => {
               label="Height(mm)"
               fullWidth
               {...field}
-              //error={!!fieldState.error}
+              error={fieldState?.invalid}
               style={{ marginBottom: "10px" }}
             />
           )}
@@ -180,7 +189,7 @@ const PatientDataForm = ({ control }) => {
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
-              //error={!!fieldState.error}
+              error={fieldState?.invalid}
             />
           )}
         />
@@ -198,7 +207,7 @@ const PatientDataForm = ({ control }) => {
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
-              //error={!!fieldState.error}
+              error={fieldState?.invalid}
             />
           )}
         />

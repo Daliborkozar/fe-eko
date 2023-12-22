@@ -1,5 +1,5 @@
 
-function determineClosestStepen(baseRange, fdxValue) {
+function determineClosestStepen(fdxValue) {
   if (fdxValue >= 0 && fdxValue < 20) {
     return 'I';
   } else if (fdxValue >= 20 && fdxValue < 40) {
