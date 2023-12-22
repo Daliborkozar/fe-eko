@@ -15,15 +15,18 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Overview } from "./Overview";
 import PatientDataForm from "./PatientDataForm";
 import TherapyForm from "./TherapyForm";
+import { useTranslation } from "react-i18next";
 //import Logo from '../assets/ekologo.png'
 
-const steps = ["Patient general data", "Feet measurement", "Overview", "Therapy"];
+
 
 function StepperHorizontal() {
   const { handleSubmit, control, watch } = useForm();
+  const { t } = useTranslation();
+  const steps = [t("patientGeneralData"), "Feet measurement", "Overview", "Therapy"];
   const [activeStep, setActiveStep] = useState(0);
   const navigate = useNavigate();
-
+  
   const personalData = watch(); // Get all form data using watch()
 
   const handleNext = () => {

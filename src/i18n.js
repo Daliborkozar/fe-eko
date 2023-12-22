@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import { translationEN } from './translations/enTranslations.js';
+import { translationSRB } from './translations/srbTranslations.js';
 
 
 i18n
@@ -10,6 +11,9 @@ i18n
     resources: {
       en: {
         translation: translationEN,
+      },
+      sr_latn: {
+        translation: translationSRB,
       },
     //   de: {
     //     translation: translationDE,

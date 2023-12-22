@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const GenderContainer = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const GenderContainer = styled.div`
 
 const StyledError = styled(FormHelperText)`
   color: red;
-`
+`;
 
 const GenderLabel = styled(FormLabel)`
   margin-right: 20px;
@@ -50,19 +50,19 @@ const PatientDataForm = ({ control }) => {
     <Grid container spacing={2} p={2}>
       {/* General Data */}
       <Grid item xs={12} md={6}>
-        <StyledHeader variant="h6">General Data</StyledHeader>
+        <StyledHeader variant="h6">{t('generalData')}</StyledHeader>
         <Controller
           name="firstName"
           control={control}
           defaultValue=""
           rules={{
-            required: t('firstNameRequired'),
+            required: t("firstNameRequired"),
           }}
           render={({ field, fieldState }) => {
             console.log(fieldState, "fieldState");
             return (
               <StyledInput
-                label="First Name*"
+                label={`${t("firstName")}*`}
                 fullWidth
                 {...field}
                 error={fieldState?.invalid}
@@ -79,7 +79,7 @@ const PatientDataForm = ({ control }) => {
           }}
           render={({ field, fieldState }) => (
             <StyledInput
-              label="Last Name"
+              label={`${t("lastName")}*`}
               fullWidth
               {...field}
               error={fieldState?.invalid}
@@ -93,7 +93,7 @@ const PatientDataForm = ({ control }) => {
           render={({ field, fieldState }) => (
             <StyledInput
               type="number"
-              label="identity ID"
+              label={t("identityId")}
               fullWidth
               {...field}
               //error={fieldState?.invalid}
@@ -101,13 +101,13 @@ const PatientDataForm = ({ control }) => {
           )}
         />
         <GenderContainer>
-          <GenderLabel component="legend">Gender:</GenderLabel>
+          <GenderLabel component="legend">{t("gender")}:</GenderLabel>
           <Controller
             name="gender"
             control={control}
             defaultValue=""
             rules={{
-              required: "Please select a gender",
+              required: t("selectGender"),
             }}
             render={({ field, fieldState }) => (
               <FormControl component="fieldset">
@@ -115,18 +115,19 @@ const PatientDataForm = ({ control }) => {
                   <FormControlLabel
                     value="male"
                     control={<Radio />}
-                    label="Male"
+                    label={t("male")}
                     style={{ flex: 1 }}
                   />
                   <FormControlLabel
                     value="female"
                     control={<Radio />}
-                    label="Female"
+                    label={t("female")}
                     style={{ flex: 1 }}
                   />
                 </RadioGroup>
-                {fieldState?.invalid && <StyledError>{fieldState?.error?.message}</StyledError>}
-  
+                {fieldState?.invalid && (
+                  <StyledError>{fieldState?.error?.message}</StyledError>
+                )}
               </FormControl>
             )}
           />
@@ -138,27 +139,28 @@ const PatientDataForm = ({ control }) => {
             control={control}
             defaultValue={null} // Initialize the field with a default value
             rules={{
-              required: "Birth Date is required",
+              required: t("birthDateRequired"),
             }}
             render={({ field, fieldState }) => (
               <FormControl fullWidth>
                 <DatePicker
                   value={field.value} // Bind DatePicker value to field.value
                   onChange={(date) => field.onChange(date)}
-                  label="Birth Date"
+                  label={t("dateofBirth")}
                   format="dd/MM/yy"
                   renderInput={(params) => <TextField {...params} fullWidth />}
                 />
-                {fieldState?.invalid && <StyledError>{fieldState?.error?.message}</StyledError>}
+                {fieldState?.invalid && (
+                  <StyledError>{fieldState?.error?.message}</StyledError>
+                )}
               </FormControl>
             )}
           />
         </div>
-       
       </Grid>
       {/* Detail Data */}
       <Grid item xs={12} md={6}>
-        <StyledHeader variant="h6">Detail Data</StyledHeader>
+        <StyledHeader variant="h6">{t('detailData')}</StyledHeader>
         <Controller
           name="height"
           control={control}
@@ -167,7 +169,7 @@ const PatientDataForm = ({ control }) => {
           render={({ field, fieldState }) => (
             <TextField
               type="number"
-              label="Height(mm)"
+              label={`${t("height")}(mm)`}
               fullWidth
               {...field}
               error={fieldState?.invalid}
@@ -185,7 +187,7 @@ const PatientDataForm = ({ control }) => {
           }}
           render={({ field, fieldState }) => (
             <TextField
-              label="Weight(kg)"
+              label={`${t("weight")}(kg)`}
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
@@ -203,7 +205,7 @@ const PatientDataForm = ({ control }) => {
           }}
           render={({ field, fieldState }) => (
             <TextField
-              label="shoe size"
+              label={t('shoeSize')}
               fullWidth
               {...field}
               style={{ marginBottom: "10px" }}
@@ -218,8 +220,8 @@ const PatientDataForm = ({ control }) => {
           render={({ field }) => (
             <FormControl fullWidth>
               <TextField select {...field} style={{ marginBottom: "10px" }}>
-                <MenuItem value="right">Right handed</MenuItem>
-                <MenuItem value="left">Left handed</MenuItem>
+                <MenuItem value="right">{t('rightHanded')}</MenuItem>
+                <MenuItem value="left">{t('leftHanded')}</MenuItem>
               </TextField>
             </FormControl>
           )}

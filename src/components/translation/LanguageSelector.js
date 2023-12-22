@@ -17,7 +17,7 @@ const LanguageSelector = () => {
         onChange={(e) => i18n.changeLanguage(e.target.value)}
       >
         <MenuItem value="en">English</MenuItem>
-        <MenuItem value="de">German</MenuItem>
+        <MenuItem value="sr_latn">Srpski</MenuItem>
         {/* Add more languages as needed */}
       </Select>
     </FormControl>
