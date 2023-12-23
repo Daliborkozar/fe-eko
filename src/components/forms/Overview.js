@@ -34,8 +34,8 @@ const OverviewSection = styled.div`
 `;
 
 const Overview = ({ personalData }) => {
-  const xo = Math.round((2 * personalData.footWidthLeft) / 3);
-  console.log(xo);
+  //const xo = Math.round((2 * personalData.footWidthLeft) / 3);
+  //console.log(xo);
   //const mlaDescendingLevelLeft = (2 * personalData.footWidthLeft) / 15;
   //const mlaDescendingLevelRight = (2 * personalData.footWidthRight) / 15;
   const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
@@ -47,7 +47,7 @@ const Overview = ({ personalData }) => {
   const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)
   const fdyD = Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4);
   const procenatlevo = Math.round((fdyL / visinaSvodaLevo) * 100);
-  const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
+  //const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
   const procenatDesno = Math.round((fdyD / visinaSvodaDesno) * 100);
   const stepenLevo = Math.round((fdxL / optimalnaDubinaLevo) * 100)
   const stepenDesno = Math.round((fdxD / optimalnaDubinaDesno) * 100)
