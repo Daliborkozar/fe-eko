@@ -41,7 +41,7 @@ const Overview = ({ personalData }) => {
   const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
   const optimalnaDubinaDesno = ((2 / 3) * personalData.footWidthRight).toFixed(2);
   const visinaSvodaLevo = Math.round(optimalnaDubinaLevo * 0.4).toFixed(2);
-  const visinaSvodaDesno = (optimalnaDubinaDesno * 0.4).toFixed(2);
+  const visinaSvodaDesno = Math.round(optimalnaDubinaDesno * 0.4).toFixed(2);
   const fdxL = optimalnaDubinaLevo - personalData.mlaDepthLeft;
   const fdxD = optimalnaDubinaDesno - personalData.mlaDepthRight;
   const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)
