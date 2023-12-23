@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const StyledHeader = styled(Typography)`
   margin-bottom: 15px;
@@ -30,7 +31,7 @@ const LegDiffLabel = styled(FormLabel)`
 `;
 
 const FeetForm = ({ control }) => {
-
+  const { t } = useTranslation();
   const onlyNumbers = (value) => {
     // This regex will match only numbers (including decimal points)
     const regex = /^\d+(\.\d+)?$/;
@@ -43,7 +44,7 @@ const FeetForm = ({ control }) => {
         <Grid container spacing={2} p={2}>
             {/* General Data */}
             <Grid item xs={12} md={4}>
-              <StyledHeader variant="h6">General Data</StyledHeader>
+              <StyledHeader variant="h6">{t('generalData')}</StyledHeader>
               <div style={{ marginBottom: "10px" }}>
                 <Controller
                   name="examinationdate"
