@@ -2,6 +2,8 @@ const translationSRB = {
     generalData: 'Opšti podaci',
     patientGeneralData: 'Opšti podaci o pacijentu',
     detailData: 'Detaljni podaci',
+    feetMeasurement: 'Merenje stopala',
+    c: 'Pregled merenja',
     firstNameRequired: 'Ime je obavezno',
     firstName: 'Ime',
     lastName: 'Prezime',

@@ -23,7 +23,7 @@ import { useTranslation } from "react-i18next";
 function StepperHorizontal() {
   const { handleSubmit, control, watch } = useForm();
   const { t } = useTranslation();
-  const steps = [t("patientGeneralData"), "Feet measurement", "Overview", "Therapy"];
+  const steps = [t("patientGeneralData"), t('feetMeasurement'), "Overview", "Therapy"];
   const [activeStep, setActiveStep] = useState(0);
   const navigate = useNavigate();
   

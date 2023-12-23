@@ -3,6 +3,7 @@ import { Controller } from "react-hook-form";
 import {
   TextField,
   Grid,
+  Box,
   Typography,
   FormControl,
   MenuItem,
@@ -59,7 +60,6 @@ const PatientDataForm = ({ control }) => {
             required: t("firstNameRequired"),
           }}
           render={({ field, fieldState }) => {
-            console.log(fieldState, "fieldState");
             return (
               <StyledInput
                 label={`${t("firstName")}*`}
@@ -92,7 +92,7 @@ const PatientDataForm = ({ control }) => {
           defaultValue=""
           render={({ field, fieldState }) => (
             <StyledInput
-              type="number"
+              //type="number"
               label={t("identityId")}
               fullWidth
               {...field}
@@ -100,62 +100,51 @@ const PatientDataForm = ({ control }) => {
             />
           )}
         />
-        <GenderContainer>
-          <GenderLabel component="legend">{t("gender")}:</GenderLabel>
-          <Controller
-            name="gender"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: t("selectGender"),
-            }}
-            render={({ field, fieldState }) => (
-              <FormControl component="fieldset">
-                <RadioGroup {...field} row>
-                  <FormControlLabel
-                    value="male"
-                    control={<Radio />}
-                    label={t("male")}
-                    style={{ flex: 1 }}
-                  />
-                  <FormControlLabel
-                    value="female"
-                    control={<Radio />}
-                    label={t("female")}
-                    style={{ flex: 1 }}
-                  />
-                </RadioGroup>
-                {fieldState?.invalid && (
-                  <StyledError>{fieldState?.error?.message}</StyledError>
-                )}
-              </FormControl>
-            )}
-          />
-        </GenderContainer>
+        
         {/* Birth Date field */}
         <div style={{ display: "block" }}>
-          <Controller
-            name="birthdate"
-            control={control}
-            defaultValue={null} // Initialize the field with a default value
-            rules={{
-              required: t("birthDateRequired"),
-            }}
-            render={({ field, fieldState }) => (
-              <FormControl fullWidth>
-                <DatePicker
-                  value={field.value} // Bind DatePicker value to field.value
-                  onChange={(date) => field.onChange(date)}
-                  label={t("dateofBirth")}
-                  format="dd/MM/yy"
-                  renderInput={(params) => <TextField {...params} fullWidth />}
-                />
-                {fieldState?.invalid && (
-                  <StyledError>{fieldState?.error?.message}</StyledError>
-                )}
-              </FormControl>
-            )}
+        <Controller
+        name="email"  // Use an appropriate name for your email field
+        control={control}
+        defaultValue=""
+        render={({ field, fieldState }) => (
+          <StyledInput
+            type="email"  // Use type "email" for email addresses
+            label={t("emailLabel")}
+            fullWidth
+            {...field}
+            error={fieldState?.invalid}
           />
+        )}
+      />
+          <Controller
+        name="phoneNumber1"  // Use an appropriate name for your phone number field
+        control={control}
+        defaultValue=""
+        render={({ field, fieldState }) => (
+          <StyledInput
+            type="tel"  // Use type "tel" for phone numbers
+            label={t("phoneNumber1")}
+            fullWidth
+            {...field}
+            error={fieldState?.invalid}
+          />
+        )}
+      />
+       <Controller
+        name="phoneNumber2"  // Use an appropriate name for your phone number field
+        control={control}
+        defaultValue=""
+        render={({ field, fieldState }) => (
+          <StyledInput
+            type="tel"  // Use type "tel" for phone numbers
+            label={t("phoneNumber2")}
+            fullWidth
+            {...field}
+            error={fieldState?.invalid}
+          />
+        )}
+      />
         </div>
       </Grid>
       {/* Detail Data */}
@@ -213,19 +202,60 @@ const PatientDataForm = ({ control }) => {
             />
           )}
         />
+        <GenderContainer>
+          <GenderLabel component="legend">{t("gender")}:</GenderLabel>
+          <Controller
+            name="gender"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: t("selectGender"),
+            }}
+            render={({ field, fieldState }) => (
+              <FormControl component="fieldset">
+                <RadioGroup {...field} row>
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label={t("male")}
+                    style={{ flex: 1 }}
+                  />
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label={t("female")}
+                    style={{ flex: 1 }}
+                  />
+                </RadioGroup>
+                {fieldState?.invalid && (
+                  <StyledError>{fieldState?.error?.message}</StyledError>
+                )}
+              </FormControl>
+            )}
+          />
+        </GenderContainer>
         <Controller
-          name="handPreference"
-          control={control}
-          defaultValue="right"
-          render={({ field }) => (
-            <FormControl fullWidth>
-              <TextField select {...field} style={{ marginBottom: "10px" }}>
-                <MenuItem value="right">{t('rightHanded')}</MenuItem>
-                <MenuItem value="left">{t('leftHanded')}</MenuItem>
-              </TextField>
-            </FormControl>
-          )}
-        />
+            name="birthdate"
+            control={control}
+            defaultValue={null} // Initialize the field with a default value
+            rules={{
+              required: t("birthDateRequired"),
+            }}
+            render={({ field, fieldState }) => (
+              <FormControl fullWidth>
+                <DatePicker
+                  value={field.value} // Bind DatePicker value to field.value
+                  onChange={(date) => field.onChange(date)}
+                  label={t("dateofBirth")}
+                  format="dd/MM/yy"
+                  renderInput={(params) => <TextField {...params} fullWidth />}
+                />
+                {fieldState?.invalid && (
+                  <StyledError>{fieldState?.error?.message}</StyledError>
+                )}
+              </FormControl>
+            )}
+          />
       </Grid>
     </Grid>
   );
