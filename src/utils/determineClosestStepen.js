@@ -21,7 +21,7 @@ console.log(fdxValue, 'determine stepi')
 console.log(rangeStart,'rangestart')
   const percentage = ((fdxValue - rangeStart) / 20) * 100;
 
-  return `Stepen: ${determineStepen(fdxValue)}, Percentage: ${percentage.toFixed(0)}%`;
+  return `${determineStepen(fdxValue)} (${percentage.toFixed(0)}%)`;
 }
 function determineStepen(fdxValue) {
   if (fdxValue >= 0 && fdxValue < 20) {
