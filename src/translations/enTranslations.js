@@ -21,6 +21,7 @@ const translationEN = {
     height: 'Height',
     weight: 'Weight',
     shoeSize: 'Shoe Size',
+    euShoeSize: 'Eu Shoe Size',
     rightHanded: 'Right handed',
     leftHanded: 'Left handed',
     controlExamSchedule: 'Control Exam Scheadule',

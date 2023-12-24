@@ -181,12 +181,12 @@ const Report = () => {
                 <BoldWrapper>Ekovel ID:</BoldWrapper> 54678
               </NoBorderCell>
               <NoBorderCell align="left">
-                <BoldWrapper>Phone:</BoldWrapper> 06422334455
+                <BoldWrapper>Phone: </BoldWrapper>{personalData.phoneNumber1}
               </NoBorderCell>
             </TableRow>
             <TableRow>
               <NoBorderCell align="left">
-                <BoldWrapper>Name:</BoldWrapper> Dalibor Kozar
+                <BoldWrapper>Name: </BoldWrapper> {personalData.firstName} {personalData.lastName}
               </NoBorderCell>
               <NoBorderCell align="left">
                 <BoldWrapper>Adress:</BoldWrapper> Kej oslobodjenja 67
@@ -194,7 +194,7 @@ const Report = () => {
             </TableRow>
             <TableRow>
               <NoBorderCell align="left">
-                <BoldWrapper>Date Of Birth:</BoldWrapper> 03/04/1979
+                <BoldWrapper>Date Of Birth: </BoldWrapper>{formatDates(personalData?.birthdate)}
               </NoBorderCell>
               <NoBorderCell align="left">
                 <BoldWrapper>City:</BoldWrapper> Zemun
@@ -259,75 +259,75 @@ const Report = () => {
               <TableBody>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>275</BoldWrapper>
+                    <BoldWrapper>{personalData?.footLengthLeft}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">Foot length L [mm]</NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>276</BoldWrapper>
+                    <BoldWrapper>{personalData?.footLengthRight}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>{personalData?.footWidthLeft}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">Foot width W [mm]</NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>{personalData?.footWidthRight}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>22</BoldWrapper>
+                    <BoldWrapper>{personalData?.mlaDepthLeft}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Medial arch depth X [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>22</BoldWrapper>
+                    <BoldWrapper>{personalData?.mlaDepthRight}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>-</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Medial arch height Y [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>-</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>-</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Bending degree of the tendon
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>-</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>{Math.round(optimalnaDubinaLevo)}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Medial arch optimal depth Xo [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>23</BoldWrapper>
+                    <BoldWrapper>{Math.round(optimalnaDubinaDesno)}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>11</BoldWrapper>
+                    <BoldWrapper>{Math.round(visinaSvodaLevo)}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Medial arch optimal height Yo [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>11</BoldWrapper>
+                    <BoldWrapper>{Math.round(visinaSvodaDesno)}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
               </TableBody>
@@ -345,44 +345,44 @@ const Report = () => {
               <TableBody>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>24</BoldWrapper>
+                    <BoldWrapper>{fdxL}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Horizontal displacement FDx [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>26</BoldWrapper>
+                    <BoldWrapper>{fdxD}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>10</BoldWrapper>
+                    <BoldWrapper>{fdyL}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Vertical displacement FDy [mm]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>11</BoldWrapper>
+                    <BoldWrapper>{fdyD}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>91</BoldWrapper>
+                    <BoldWrapper>{mlaEvelLeft.percentage}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">
                     Displacement percentage [%]
                   </NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>100</BoldWrapper>
+                    <BoldWrapper>{mlaEvelRight.percentage}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>IV</BoldWrapper>
+                    <BoldWrapper>{mlaEvelLeft.stepen}</BoldWrapper>
                   </NoBorderCell>
                   <NoBorderCell align="center">Displacement level</NoBorderCell>
                   <NoBorderCell align="left">
-                    <BoldWrapper>IV</BoldWrapper>
+                    <BoldWrapper>{mlaEvelRight.stepen}</BoldWrapper>
                   </NoBorderCell>
                 </TableRow>
               </TableBody>
@@ -400,27 +400,27 @@ const Report = () => {
               <TableBody>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>EU shoe size</BoldWrapper>
+                    <BoldWrapper>{t('euShoeSize')}</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="center">22</NoBorderCell>
+                  <NoBorderCell align="center">{personalData.shoeSize}</NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
                     <BoldWrapper>Ekovel Step Correct size</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="center">24-25</NoBorderCell>
+                  <NoBorderCell align="center">{personalData?.therapy?.escSize}</NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
                     <BoldWrapper>Initial height IY [mm]</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="center">12</NoBorderCell>
+                  <NoBorderCell align="center">{personalData?.therapy?.iy}</NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
                     <BoldWrapper>Optimal height OY [mm]</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="center">15</NoBorderCell>
+                  <NoBorderCell align="center">{personalData?.therapy?.oy}</NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
@@ -439,7 +439,7 @@ const Report = () => {
               </TableBody>
             </Table>
             <StyledMidTitle>
-              <Typography>{t("controlExamSchedule")}</Typography>
+              <MiddleTitle>{t("controlExamSchedule")}</MiddleTitle>
             </StyledMidTitle>
             <Table
               size="small"

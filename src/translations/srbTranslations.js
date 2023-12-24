@@ -17,6 +17,7 @@ const translationSRB = {
     height: 'Visina',
     weight: 'Težina',
     shoeSize: 'Broj cipela',
+    euShoeSize: 'EU Broj Cipela',
     rightHanded: 'Desnoruk',
     leftHanded: 'Levoruk',
     controlExamSchedule: 'Raspored kontrolnih pregleda',

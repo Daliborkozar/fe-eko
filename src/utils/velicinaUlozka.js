@@ -31,6 +31,7 @@ const findClosestObject = (number) => {
 function findRange(leftFootLength, rightFootLength) {
   for (const data of velicinaUloskaData) {
     if (leftFootLength >= data.min && rightFootLength <= data.max) {
+      console.log(data)
       return data;
     }
   }
