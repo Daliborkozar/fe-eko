@@ -20,7 +20,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Logo from "../assets/ekologo.png";
 import { calculateBMI } from "../utils/utils";
 import { formatDates } from "../utils/addMonths";
-import { useLocation } from "react-router-dom";
+//import { useLocation } from "react-router-dom";
 
 const imgStyle = {
   width: "180px",
