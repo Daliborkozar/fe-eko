@@ -22,7 +22,12 @@ const translationEN = {
     weight: 'Weight',
     shoeSize: 'Shoe Size',
     rightHanded: 'Right handed',
-    leftHanded: 'Left handed'
+    leftHanded: 'Left handed',
+    controlExamSchedule: 'Control Exam Scheadule',
+    ekovelReport: 'Ekovel Report',
+    generalExamination: 'General Examination',
+    optimalWeight: 'Optimal Weight',
+    feetParametes: 'Feet Parameters',
 }
 
 

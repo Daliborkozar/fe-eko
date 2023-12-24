@@ -85,7 +85,7 @@ const PatientDataForm = ({ control }) => {
           )}
         />
         <Controller
-          name="id"
+          name="identityId"
           control={control}
           defaultValue=""
           render={({ field, fieldState }) => (
@@ -150,12 +150,13 @@ const PatientDataForm = ({ control }) => {
         <StyledHeader variant="h6">{t('detailData')}</StyledHeader>
         <Controller
           name="height"
+          type="number"
           control={control}
-          defaultValue=""
+          defaultValue={null}
           rules={{ validate: onlyNumbers }}
           render={({ field, fieldState }) => (
             <TextField
-              type="number"
+            type="number"
               label={`${t("height")}(mm)`}
               fullWidth
               {...field}
@@ -192,6 +193,7 @@ const PatientDataForm = ({ control }) => {
           }}
           render={({ field, fieldState }) => (
             <TextField
+            type='numbeer'
               label={t('shoeSize')}
               fullWidth
               {...field}

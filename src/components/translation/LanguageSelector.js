@@ -13,7 +13,7 @@ const LanguageSelector = () => {
       <Select
         labelId="language-select-label"
         id="language-select"
-        value={i18n.language}
+        value={i18n.language || 'en'}
         onChange={(e) => i18n.changeLanguage(e.target.value)}
       >
         <MenuItem value="en">English</MenuItem>

@@ -41,19 +41,24 @@ const Overview = ({ personalData }) => {
   const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
   const optimalnaDubinaDesno = ((2 / 3) * personalData.footWidthRight).toFixed(2);
   const visinaSvodaLevo = Math.round(optimalnaDubinaLevo * 0.4).toFixed(2);
-  const visinaSvodaDesno = Math.round(optimalnaDubinaDesno * 0.4).toFixed(2);
-  const fdxL = optimalnaDubinaLevo - personalData.mlaDepthLeft;
-  const fdxD = optimalnaDubinaDesno - personalData.mlaDepthRight;
+  const visinaSvodaDesno = Math.round((optimalnaDubinaDesno * 0.4).toFixed(2))
+  const fdxL = Math.round(optimalnaDubinaLevo - personalData.mlaDepthLeft);
+  const fdxD = Math.round(optimalnaDubinaDesno - personalData.mlaDepthRight);
   const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4)
   const fdyD = Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4);
   const procenatlevo = Math.round((fdyL / visinaSvodaLevo) * 100);
-  //const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
+  const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
   const procenatDesno = Math.round((fdyD / visinaSvodaDesno) * 100);
-  const stepenLevo = Math.round((fdxL / optimalnaDubinaLevo) * 100)
-  const stepenDesno = Math.round((fdxD / optimalnaDubinaDesno) * 100)
-  const mlaEvelLeft = determineClosestStepen(stepenLevo);
-  const mlaEvelRight = determineClosestStepen(stepenDesno);
-
+  //const stepenLevo = Math.round((fdxL / optimalnaDubinaLevo) * 100)
+  //const stepenDesno = Math.round((fdxD / optimalnaDubinaDesno) * 100)
+  const stepenLevoNoRound = (fdxL / optimalnaDubinaLevo) * 100
+  const stepenDesnoNoRound = (fdxD / optimalnaDubinaDesno) * 100
+  const mlaEvelLeft = determineClosestStepen(stepenLevoNoRound);
+  const mlaEvelRight = determineClosestStepen(stepenDesnoNoRound);
+console.log(procenatlevo,'levo')
+console.log(procenatlevonoround, 'levonoround')
+console.log(procenatDesno,'desno')
+//console.log(procenatlevonoround, 'levonoround')
   return (
     <OverviewContainer>
       <OverviewSection>

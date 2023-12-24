@@ -64,7 +64,7 @@ function StepperHorizontal() {
   };
 
   const handleOpenReport =  () => {
-      navigate('/report')
+      navigate('/report', { state: { personalData } })
   }
 
   console.log(personalData)

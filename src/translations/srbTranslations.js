@@ -3,7 +3,7 @@ const translationSRB = {
     patientGeneralData: 'Opšti podaci o pacijentu',
     detailData: 'Detaljni podaci',
     feetMeasurement: 'Merenje stopala',
-    c: 'Pregled merenja',
+    overview: 'Pregled merenja',
     firstNameRequired: 'Ime je obavezno',
     firstName: 'Ime',
     lastName: 'Prezime',
@@ -19,6 +19,11 @@ const translationSRB = {
     shoeSize: 'Broj cipela',
     rightHanded: 'Desnoruk',
     leftHanded: 'Levoruk',
+    controlExamSchedule: 'Raspored kontrolnih pregleda',
+    ekovelReport: 'Ekovel Izvestaj',
+    generalExamination: 'Opšti pregled',
+    optimalWeight: 'Optimalna težina',
+    feetParametes: 'Parametri Stopala',
     
 }
 
