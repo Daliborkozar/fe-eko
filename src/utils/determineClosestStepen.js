@@ -17,6 +17,7 @@ function determineClosestStepen(fdxValue) {
     // Handle other cases if needed
     return 'Invalid Range';
   }
+  console.log(rangeEnd)
 console.log(fdxValue, 'determine stepi')
 console.log(rangeStart,'rangestart')
   const percentage = ((fdxValue - rangeStart) / 20) * 100;
