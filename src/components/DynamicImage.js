@@ -24,7 +24,7 @@ const DynamicImage = ({ imageName }) => {
   return (
     <Box align="center">
       {imageSrc && (
-        <img src={imageSrc} width="173px" height="450px" alt={`Image ${imageName}`} />
+        <img src={imageSrc} width="173px" height="450px" alt={imageName} />
       )}
     </Box>
   );

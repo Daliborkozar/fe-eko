@@ -13,7 +13,6 @@ import {
   TextField,
   TableBody,
 } from "@mui/material";
-import desnop11 from "../assets/desnop11.png";
 import PrintIcon from "@mui/icons-material/Print";
 import SendIcon from "@mui/icons-material/Send";
 import Logo from "../assets/ekologo.png";
@@ -22,12 +21,6 @@ import { formatDates } from "../utils/addMonths";
 import { DynamicImage } from "./DynamicImage";
 import { useLocation } from "react-router-dom";
 import { determineClosestStepen } from "../utils/determineClosestStepen";
-
-const imgStyle = {
-  width: "180px",
-  height: "450px", // Ensures original aspect ratio
-  //marginRight: "20px", // Adjust this margin as needed
-};
 
 const Wrapper = styled.div`
   background: none;
@@ -79,7 +72,7 @@ const Report = () => {
   const { t } = useTranslation();
   const [serialNumber, setSerialNumber] = useState("");
   const location = useLocation();
-  
+
   const { personalData } = location?.state || {};
   console.log(personalData, "report data");
   const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
@@ -91,7 +84,7 @@ const Report = () => {
   const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4);
   const fdyD = Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4);
   const procenatlevo = Math.round((fdyL / visinaSvodaLevo) * 100);
-  const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
+  //const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
   const procenatDesno = Math.round((fdyD / visinaSvodaDesno) * 100);
   //const stepenLevo = Math.round((fdxL / optimalnaDubinaLevo) * 100)
   //const stepenDesno = Math.round((fdxD / optimalnaDubinaDesno) * 100)
