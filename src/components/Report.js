@@ -13,14 +13,15 @@ import {
   TextField,
   TableBody,
 } from "@mui/material";
-import levo11 from "../assets/levop11.png";
 import desnop11 from "../assets/desnop11.png";
 import PrintIcon from "@mui/icons-material/Print";
 import SendIcon from "@mui/icons-material/Send";
 import Logo from "../assets/ekologo.png";
-import { calculateBMI } from "../utils/utils";
+import { calculateAndReturnParams, calculateBMI } from "../utils/utils";
 import { formatDates } from "../utils/addMonths";
-//import { useLocation } from "react-router-dom";
+import { DynamicImage } from "./DynamicImage";
+import { useLocation } from "react-router-dom";
+import { determineClosestStepen } from "../utils/determineClosestStepen";
 
 const imgStyle = {
   width: "180px",
@@ -74,53 +75,43 @@ const MiddleTitle = styled(Typography)`
   }
 `;
 
-const personalData = {
-  firstName: "Dalibor",
-  lastName: "Kozar",
-  identityId: "2dr3345",
-  email: "daliborkozar@hotmail.com",
-  phoneNumber1: "642251755",
-  phoneNumber2: "",
-  height: "182",
-  weight: "22",
-  shoeSize: "24",
-  gender: "male",
-  birthdate: "2023-12-10T23:00:00.000Z",
-  examinationdate: "2023-12-23T10:47:58.932Z",
-  footLengthLeft: "160",
-  footWidthLeft: "40",
-  mlaDepthLeft: "3",
-  tendonPositionLeft: "",
-  legAlignmentLeft: "",
-  footLengthRight: "160",
-  footWidthRight: "40",
-  mlaDepthRight: "3",
-  tendonPositionRight: "",
-  legAlignmentRight: "",
-  legLengthDifference: "",
-  selectedLeg: "",
-  leftFootprintSplit: false,
-  rightFootprintSplit: false,
-  therapy: {
-    escSize: "24-25",
-    sport: false,
-    iy: 12,
-    oy: 15,
-    ai: 1,
-    checkdate1: "2024-02-22T23:00:00.000Z",
-    checkdate2: "2024-04-22T22:00:00.000Z",
-    checkdate3: "2024-06-23T22:00:00.000Z",
-  },
-  serialNumber: " ",
-  serialNumberDate: "2023-12-23T10:48:24.509Z",
-};
 const Report = () => {
   const { t } = useTranslation();
   const [serialNumber, setSerialNumber] = useState("");
-
-  //const location = useLocation();
-  //const { personalData } = location.state || {};
+  const location = useLocation();
+  
+  const { personalData } = location?.state || {};
   console.log(personalData, "report data");
+  const optimalnaDubinaLevo = ((2 / 3) * personalData.footWidthLeft).toFixed(2);
+  const optimalnaDubinaDesno = ((2 / 3) * personalData.footWidthRight).toFixed(2);
+  const visinaSvodaLevo = Math.round(optimalnaDubinaLevo * 0.4).toFixed(2);
+  const visinaSvodaDesno = Math.round((optimalnaDubinaDesno * 0.4).toFixed(2));
+  const fdxL = Math.round(optimalnaDubinaLevo - personalData.mlaDepthLeft);
+  const fdxD = Math.round(optimalnaDubinaDesno - personalData.mlaDepthRight);
+  const fdyL = Math.round(visinaSvodaLevo - personalData.mlaDepthLeft * 0.4);
+  const fdyD = Math.round(visinaSvodaDesno - personalData.mlaDepthRight * 0.4);
+  const procenatlevo = Math.round((fdyL / visinaSvodaLevo) * 100);
+  const procenatlevonoround = (fdyL / visinaSvodaLevo) * 100;
+  const procenatDesno = Math.round((fdyD / visinaSvodaDesno) * 100);
+  //const stepenLevo = Math.round((fdxL / optimalnaDubinaLevo) * 100)
+  //const stepenDesno = Math.round((fdxD / optimalnaDubinaDesno) * 100)
+  const stepenLevoNoRound = (fdxL / optimalnaDubinaLevo) * 100;
+  const stepenDesnoNoRound = (fdxD / optimalnaDubinaDesno) * 100;
+  const mlaEvelLeft = determineClosestStepen(stepenLevoNoRound);
+  const mlaEvelRight = determineClosestStepen(stepenDesnoNoRound);
+  const leftImage = calculateAndReturnParams(
+    mlaEvelLeft.stepen,
+    procenatlevo,
+    "levo",
+    personalData.leftFootprintSplit
+  );
+  const rightImage = calculateAndReturnParams(
+    mlaEvelRight.stepen,
+    procenatDesno,
+    "desno",
+    personalData.rightFootprintSplit
+  );
+
   const handleSendData = () => {
     // Add logic to send data to API using serialNumber
     console.log("Sending data...", serialNumber);
@@ -219,7 +210,7 @@ const Report = () => {
           </TableBody>
         </Table>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <img src={levo11} style={imgStyle} alt="logo" />
+          <DynamicImage imageName={leftImage} />
           <Box
             sx={{
               display: "flex",
@@ -228,7 +219,9 @@ const Report = () => {
             }}
           >
             <StyledMidTitle>
-              <MiddleTitle variant="body1">{t('generalExamination')}</MiddleTitle>
+              <MiddleTitle variant="body1">
+                {t("generalExamination")}
+              </MiddleTitle>
             </StyledMidTitle>
             <Table
               size="small"
@@ -238,28 +231,32 @@ const Report = () => {
               <TableBody>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>{t('height')} [cm]</BoldWrapper>
+                    <BoldWrapper>{t("height")} [cm]</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="left">{personalData?.height}</NoBorderCell>
+                  <NoBorderCell align="left">
+                    {personalData?.height}
+                  </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>{t('weight')} [kg]</BoldWrapper>
+                    <BoldWrapper>{t("weight")} [kg]</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="left">{personalData?.weight}</NoBorderCell>
+                  <NoBorderCell align="left">
+                    {personalData?.weight}
+                  </NoBorderCell>
                 </TableRow>
                 <TableRow>
                   <NoBorderCell align="left">
-                    <BoldWrapper>{t('optimalWeight')} [kg]</BoldWrapper>
+                    <BoldWrapper>{t("optimalWeight")} [kg]</BoldWrapper>
                   </NoBorderCell>
-                  <NoBorderCell align="left">{calculateBMI(personalData?.height, personalData.gender)}</NoBorderCell>
+                  <NoBorderCell align="left">
+                    {calculateBMI(personalData?.height, personalData.gender)}
+                  </NoBorderCell>
                 </TableRow>
               </TableBody>
             </Table>
             <StyledMidTitle>
-              <MiddleTitle>
-               {t('feetParametes')}
-              </MiddleTitle>
+              <MiddleTitle>{t("feetParametes")}</MiddleTitle>
             </StyledMidTitle>
             <Table
               size="small"
@@ -449,9 +446,7 @@ const Report = () => {
               </TableBody>
             </Table>
             <StyledMidTitle>
-              <Typography>
-                {t("controlExamSchedule")}
-              </Typography>
+              <Typography>{t("controlExamSchedule")}</Typography>
             </StyledMidTitle>
             <Table
               size="small"
@@ -486,7 +481,7 @@ const Report = () => {
               </TableBody>
             </Table>
           </Box>
-          <img src={desnop11} style={imgStyle} alt="logo" />
+          <DynamicImage imageName={rightImage} />
         </Box>
       </TableContainer>
     </Wrapper>

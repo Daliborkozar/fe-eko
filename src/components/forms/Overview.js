@@ -162,7 +162,7 @@ console.log(procenatDesno,'desno')
         </p> */}
         <p>
           <span>MLA Descending level: </span>
-          <span>{mlaEvelLeft}</span>
+          <span>{`${mlaEvelLeft.stepen} (${mlaEvelLeft.percentage}%)`}</span>
         </p>
       </OverviewSection>
       <OverviewSection>
@@ -195,7 +195,7 @@ console.log(procenatDesno,'desno')
         </p> */}
         <p>
           <span>MLA Descending level: </span>
-          <span>{mlaEvelRight}</span>
+          <span>{`${mlaEvelRight.stepen} (${mlaEvelRight.percentage}%)`}</span>
         </p>
       </OverviewSection>
     </OverviewContainer>

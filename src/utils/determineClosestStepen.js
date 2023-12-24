@@ -14,16 +14,17 @@ function determineClosestStepen(fdxValue) {
     rangeStart = 60;
     rangeEnd = 100;
   } else {
-    // Handle other cases if needed
     return 'Invalid Range';
   }
-  console.log(rangeEnd)
-console.log(fdxValue, 'determine stepi')
-console.log(rangeStart,'rangestart')
+  
   const percentage = ((fdxValue - rangeStart) / 20) * 100;
 
-  return `${determineStepen(fdxValue)} (${percentage.toFixed(0)}%)`;
+  return {
+    stepen: determineStepen(fdxValue),
+    percentage: percentage.toFixed(0),
+  };
 }
+
 function determineStepen(fdxValue) {
   if (fdxValue >= 0 && fdxValue < 20) {
     return 'I';
@@ -34,7 +35,6 @@ function determineStepen(fdxValue) {
   } else if (fdxValue >= 60 && fdxValue <= 100) {
     return 'IV';
   } else {
-    // Handle other cases if needed
     return 'Invalid Range';
   }
 }
