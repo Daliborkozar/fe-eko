@@ -18,10 +18,10 @@ function determineClosestStepen(fdxValue) {
   }
   console.log(rangeEnd)
   const percentage = ((fdxValue - rangeStart) / 20) * 100;
-
+  const clampedPercentage = Math.min(100, Math.max(0, percentage));
   return {
     stepen: determineStepen(fdxValue),
-    percentage: percentage.toFixed(0),
+    percentage: clampedPercentage.toFixed(0),
   };
 }
 
