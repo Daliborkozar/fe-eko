@@ -28,14 +28,30 @@ const findClosestObject = (number) => {
   return sortedData[0];
 };
 
+
 function findRange(leftFootLength, rightFootLength) {
+  const minLength = Math.min(leftFootLength, rightFootLength);
+  const maxLength = Math.max(leftFootLength, rightFootLength);
+
+  // Check if the range is lower than the first or higher than the last
+  if (minLength < velicinaUloskaData[0].min) {
+    console.log(velicinaUloskaData[0], 'find range data');
+    return velicinaUloskaData[0];
+  } else if (maxLength > velicinaUloskaData[velicinaUloskaData.length - 1].max) {
+    console.log(velicinaUloskaData[velicinaUloskaData.length - 1], 'find range data');
+    return velicinaUloskaData[velicinaUloskaData.length - 1];
+  }
+
+  // Check for ranges between the data
   for (const data of velicinaUloskaData) {
-    if (leftFootLength >= data.min && rightFootLength <= data.max) {
-      console.log(data)
+    if (minLength >= data.min && maxLength <= data.max) {
+      console.log(data, 'find range data');
       return data;
     }
   }
+
   return null; // or any other value to indicate no matching range found
 }
+
 
 export { velicinaUloskaData, findClosestObject, findRange };
