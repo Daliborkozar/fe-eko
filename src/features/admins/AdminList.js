@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Tabs,
+  Tab,
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeactivateIcon from '@mui/icons-material/Block';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
 import { useGetAdminsQuery } from "./adminApiSlice";
 
 
@@ -21,13 +25,17 @@ const AdminList = () => {
         isError,
         // error
     } = useGetAdminsQuery()
-
+    const [currentTab, setCurrentTab] = useState(0);
     console.log(data)
   //const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   
+  const handleTabChange = (event, newValue) => {
+    setCurrentTab(newValue);
+  };
+
   const handleDelete = (rowData) => {
     setDeleteModalOpen(true);
     setSelectedRowData(rowData);
@@ -62,7 +70,9 @@ const AdminList = () => {
 
   const columnDefs = [
     { field: "roles.Admin", headerName: 'Role', flex: 1 },
+    { field: 'displayName', headerName: 'Display Name', flex: 1},
     { field: "username", headerName: 'User Name', flex: 1},
+    { field: "email", headerName: 'E-mail', flex: 1},
     { field: "organization" , headerName: 'Organization', flex: 1},
     { field: "isActive", headerName: 'Active' },
     { 
@@ -92,6 +102,10 @@ const AdminList = () => {
 
   return (
     <div>
+      <Tabs value={currentTab} onChange={handleTabChange} >
+        <Tab label="All Admins" />
+        <Tab label="All Users" />
+      </Tabs>
       <div className="ag-theme-alpine" style={{ height: '80vh', width: '100%' }}>
         <AgGridReact rowData={rowData} columnDefs={columnDefs}></AgGridReact>
       </div>

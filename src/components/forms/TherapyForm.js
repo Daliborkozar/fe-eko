@@ -89,6 +89,7 @@ const TherapyForm = ({ control, personalData }) => {
 
   const ulozakData = findRange(personalData.footLengthLeft, personalData.footLengthRight);
   const defaultRange = ulozakData?.range;
+  console.log(ulozakData, 'ulozakdata')
   return (
     <>
       <TableContainer>
@@ -102,7 +103,7 @@ const TherapyForm = ({ control, personalData }) => {
           <tbody>
             <TableRow>
               <TableCell>Ekovel Step Correct size</TableCell>
-              <TableCell>{ulozakData?.range}</TableCell>
+              <TableCell>{defaultRange}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Initial Height IY (mm)</TableCell>

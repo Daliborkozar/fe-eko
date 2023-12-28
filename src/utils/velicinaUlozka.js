@@ -43,10 +43,18 @@ function findRange(leftFootLength, rightFootLength) {
   }
 
   // Check for ranges between the data
-  for (const data of velicinaUloskaData) {
+  for (let i = 0; i < velicinaUloskaData.length; i++) {
+    const data = velicinaUloskaData[i];
+
     if (minLength >= data.min && maxLength <= data.max) {
       console.log(data, 'find range data');
       return data;
+    }
+
+    // Check if max is in the next range
+    if (i < velicinaUloskaData.length - 1 && maxLength > data.max && maxLength <= velicinaUloskaData[i + 1].max) {
+      console.log(velicinaUloskaData[i + 1], 'find range data (next range)');
+      return velicinaUloskaData[i + 1];
     }
   }
 
