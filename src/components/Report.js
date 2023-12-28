@@ -157,7 +157,7 @@ const Report = () => {
             Print
           </PrintButton>
         </Box>
-        <Box align="center">
+        <Box align="center" sx={{ marginBottom: '10px'}}>
           <img src={Logo} width="240" height="84" alt="logoinreport" />
         </Box>
         <StyledMainTitle>
@@ -172,7 +172,7 @@ const Report = () => {
 
         <Table
           size="small"
-          sx={{ maxWidth: 450, marginBottom: 1 }}
+          sx={{ maxWidth: 400, marginBottom: 1 }}
           align="center"
         >
           <TableBody>
@@ -218,7 +218,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ maxWidth: 450, marginBottom: 1 }}
+              sx={{ maxWidth: 400, marginBottom: 1 }}
               align="center"
             >
               <TableBody>
@@ -253,7 +253,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ minWidth: 450, marginBottom: 1 }}
+              sx={{ minWidth: 400, marginBottom: 1 }}
               align="center"
             >
               <TableBody>
@@ -339,7 +339,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ maxWidth: 450, marginBottom: 1 }}
+              sx={{ maxWidth: 400, marginBottom: 1 }}
               align="center"
             >
               <TableBody>
@@ -394,7 +394,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ maxWidth: 450, marginBottom: 1 }}
+              sx={{ maxWidth: 400, marginBottom: 1 }}
               align="center"
             >
               <TableBody>
@@ -443,7 +443,7 @@ const Report = () => {
             </StyledMidTitle>
             <Table
               size="small"
-              sx={{ maxWidth: 450, marginBottom: 1 }}
+              sx={{ maxWidth: 400, marginBottom: 1 }}
               align="center"
             >
               <TableBody>
