@@ -6,9 +6,12 @@ import InputForm from './components/forms/PatientDataForm';
 import { StepperHorizontal } from './components/forms/Stepper';
 import Report from './components/Report';
 import Layout from './components/Layout';
-import AdminList from './features/admins/AdminList';
+import AdminList from './features/superadmins/AdminList';
 import { useSelector } from 'react-redux';
-import PrivateRoutes from './components/ProtectedRoutes'
+import SuperAdminPrivateRoute from './routes/SuperAdminPrivateRoute';
+import AllUsersList from './features/superadmins/AllUsersList';
+import AdminPrivateRoute from './routes/AdminPrivateRoute';
+import UsersInOrganization from './features/admins/UsersInOrganization';
 
 
 const App = () => {
@@ -22,8 +25,12 @@ const App = () => {
           <Route index element={<Navigate to="/login"/>} />
           <Route path="patient" element={<InputForm />} />
           <Route path="stepper" element={<StepperHorizontal />} />
-          <Route element={<PrivateRoutes token={auth.token}/>}>
-            <Route path="table" element={<AdminList />} />
+          <Route element={<SuperAdminPrivateRoute token={auth.token} requiredRole={auth.roles[0]} />}>
+            <Route path="admintable" element={<AdminList />} />
+            <Route path="alluserstable" element={<AllUsersList />} />
+          </Route>
+          <Route element={<AdminPrivateRoute token={auth.token} requiredRole={auth.role} />}>
+            <Route path=":orgname/users" element={<UsersInOrganization />} />
           </Route>
         </Route>
         <Route path="report" element={<Report />} />

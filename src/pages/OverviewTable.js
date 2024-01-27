@@ -3,7 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import { useQuery } from '@tanstack/react-query';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import axios from '../api/axios';
+import {axiosAuth} from '../api/axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeactivateIcon from '@mui/icons-material/Block';
 import Dialog from '@mui/material/Dialog';
@@ -13,7 +13,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 
 const fetchAdminData = async () => {
-  const response = await axios.get('/admin');
+  const response = await axiosAuth.get('/admin');
   console.log(response);
   return response.data; // Assuming the response structure is JSON
 };
@@ -79,12 +79,6 @@ const OverviewTable = () => {
   if (isError) {
     return <div>Error loading admin data: {isError.message}</div>;
   }
-
-  const rowData = data || [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 }
-  ];
 
   return (
     <div>

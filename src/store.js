@@ -1,14 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authReducer from './redux/authSlice';
-import { apiSlice } from './redux/apiSlice'
+import axios from './api/axios';  // Import your enhanced Axios instance
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-      [apiSlice.reducerPath]: apiSlice.reducer,
-      auth: authReducer
+    auth: authReducer,
   },
-  middleware: getDefaultMiddleware =>
-      getDefaultMiddleware().concat(apiSlice.middleware),
-      //if production devtools turn to false
-  devTools: true
-})
+});
+
+export default store;
