@@ -11,18 +11,12 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeactivateIcon from "@mui/icons-material/Block";
-//import { useGetAdminsQuery } from "./adminApiSlice";
 import { useGetOrgUsers } from "../../api/ekoApi";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UsersInOrganization = () => {
-    const auth = useSelector((state) => state.auth);
-  //const { data, isLoading, isError } = useGetAdmins();
-  const { data, isLoading, isError } = useGetOrgUsers(auth.organization)
-  //const navigate = useNavigate()
-  //console.log(data);
-  //const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
+  const auth = useSelector((state) => state.auth);
+  const { data, isLoading, isError } = useGetOrgUsers(auth.organization);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
@@ -66,7 +60,7 @@ const UsersInOrganization = () => {
     { field: "email", headerName: "E-mail", flex: 1 },
     { field: "organization", headerName: "Organization", flex: 1 },
     { field: "isActive", headerName: "Active" },
-    { field: "_id", hide: true},
+    { field: "_id", hide: true },
     {
       headerName: "Actions",
       cellRenderer: (params) => (

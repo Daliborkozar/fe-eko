@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { selectCurrentToken, setCredentials, logOut } from '../redux/authSlice';
+import { selectCurrentToken } from '../redux/authSlice';
 import store from '../store';
 
 export const axiosInstance = axios.create({

@@ -10,28 +10,37 @@ import {
   Button,
   Tabs,
   Tab,
+  Box,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeactivateIcon from "@mui/icons-material/Block";
-//import { useGetAdminsQuery } from "./adminApiSlice";
-import { useGetAdmins, useGetAllUsers } from "../../api/ekoApi";
+import { useGetAdmins } from "../../api/ekoApi";
 import { useNavigate } from "react-router-dom";
+import { SearchInput } from "../../components/SearchInput";
+import styled from "styled-components";
+import { TableTabs } from "../../components/TableTabs";
+
+const TabAndSearchWrapper = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-right: 10px;
+  align-items: center;
+`;
 
 const AdminList = () => {
   const { data, isLoading, isError } = useGetAdmins();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState(0);
-  console.log(data);
-  //const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
 
   useEffect(() => {
     if (currentTab === 1) {
-      navigate('/alluserstable');
+      navigate("/alluserstable");
     }
-  }, [currentTab]);
+  }, [currentTab, navigate]);
 
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);
@@ -105,10 +114,10 @@ const AdminList = () => {
 
   return (
     <div>
-      <Tabs value={currentTab} onChange={handleTabChange}>
-        <Tab label="All Admins" />
-        <Tab label="All Users" />
-      </Tabs>
+      <TabAndSearchWrapper>
+        <TableTabs currentTab={currentTab} handleTabChange={handleTabChange} />
+        <SearchInput />
+      </TabAndSearchWrapper>
       <div
         className="ag-theme-alpine"
         style={{ height: "80vh", width: "100%" }}
