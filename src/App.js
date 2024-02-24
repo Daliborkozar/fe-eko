@@ -12,6 +12,8 @@ import SuperAdminPrivateRoute from './routes/SuperAdminPrivateRoute';
 import AllUsersList from './features/superadmins/AllUsersList';
 import AdminPrivateRoute from './routes/AdminPrivateRoute';
 import UsersInOrganization from './features/admins/UsersInOrganization';
+import UsersPrivateRoute from './routes/UsersPrivateRoute';
+import UsersOverview from './features/users/UsersOverview'
 
 
 const App = () => {
@@ -32,7 +34,11 @@ const App = () => {
           <Route element={<AdminPrivateRoute token={auth.token} requiredRole={auth.role} />}>
             <Route path=":orgname/users" element={<UsersInOrganization />} />
           </Route>
+          <Route element={<UsersPrivateRoute token={auth.token} requiredRole={auth.role} />}>
+            <Route path=":orgname/user" element={<UsersOverview />} />
+          </Route>
         </Route>
+        
         <Route path="report" element={<Report />} />
         {/* Public route accessible to everyone */}
         <Route path="login" element={<LoginPage />} /> 

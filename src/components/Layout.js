@@ -18,19 +18,30 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Logo from "../assets/ekologo.png";
 import { useRegisterUser } from "../api/ekoApi";
 import { transformObject } from "../utils/transformCreateUser";
+import { StepperHorizontal } from "./forms/Stepper";
 
 const Layout = () => {
   const auth = useSelector((state) => state.auth);
   const registerUser = useRegisterUser();
   //const [createAdmin] = useCreateAdminMutation();
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const [ispatientModalOpen, setPatientModalOpen] = useState(false);
+  console.log(auth, "AUTH INSIDE TOOLBAR");
+  console.log(auth.roles, "ROLES inside toolbar");
   const handleOpenModal = () => {
     setModalOpen(true);
   };
 
+  const handlePatientOpenModal = () => {
+    setPatientModalOpen(true);
+  };
+
   const handleCloseModal = () => {
     setModalOpen(false);
+  };
+
+  const handleClosePatientModal = () => {
+    setPatientModalOpen(false);
   };
 
   // const handleCreateUser = async (userData) => {
@@ -63,7 +74,7 @@ const Layout = () => {
   const handleCreateUser = (formData) => {
     //e.preventDefault();
     //console.log(formdata);
-    const createUserData = transformObject(formData)
+    const createUserData = transformObject(formData);
     // const data = {
     //   user: "adminko55",
     //   displayName: "Adminko ciric55",
@@ -75,7 +86,7 @@ const Layout = () => {
     //   email: "dada@b55e.com",
     // };
 
-    console.log(createUserData, 'create user Data')
+    console.log(createUserData, "create user Data");
     registerUser.mutateAsync(createUserData);
   };
 
@@ -101,9 +112,16 @@ const Layout = () => {
             />
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <IconButton aria-label="user-create" onClick={handleOpenModal}>
-              <PersonAddIcon />
-            </IconButton>
+            {auth?.roles[0] !== "User" ? (
+              <IconButton aria-label="patient-create" onClick={handleOpenModal}>
+                <PersonAddIcon />
+              </IconButton>
+            ) : (
+              <IconButton aria-label="user-create" onClick={handlePatientOpenModal}>
+                <PersonAddIcon />
+              </IconButton>
+            )}
+
             <Typography
               variant="body1"
               component="div"
@@ -141,13 +159,28 @@ const Layout = () => {
             paddingBottom: 1,
           }}
         >
-          {auth?.roles[0] === 'SuperAdmin' ? 'Create Admin' : 'Create User' }
+          {auth?.roles[0] === "SuperAdmin" ? "Create Admin" : "Create User"}
         </DialogTitle>
         <DialogContent sx={{ marginTop: 2 }}>
           <CreateAdminForm
             handleSubmit={handleCreateUser}
             handleCloseModal={handleCloseModal}
           />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={ispatientModalOpen} onClose={handleClosePatientModal} maxWidth='lg' >
+        <DialogTitle
+          sx={{
+            backgroundColor: "black",
+            color: "white",
+            paddingTop: 1,
+            paddingBottom: 1,
+          }}
+        >
+          Create Patient
+        </DialogTitle>
+        <DialogContent >
+        <StepperHorizontal />
         </DialogContent>
       </Dialog>
     </div>

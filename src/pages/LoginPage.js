@@ -62,6 +62,9 @@ const LoginPage = () => {
       if(userData.roles[0] === "Admin"){
         navigate(`/${userData.organization}/users`);
       }
+      if(userData.roles[0] === "User"){
+        navigate(`/${userData.organization}/user`);
+      }
       
     } catch (error) {
       // TODO: Handle login error, display an error message, etc.
