@@ -145,7 +145,7 @@ const Report = () => {
             onClick={handleSendData}
             size="small"
           >
-            Update serial number
+            {t('updateSerialNumber')}
           </Button>
           <PrintButton
             variant="contained"

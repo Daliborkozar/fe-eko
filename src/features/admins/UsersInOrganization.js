@@ -9,6 +9,7 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeactivateIcon from "@mui/icons-material/Block";
 import { useGetOrgUsers } from "../../api/ekoApi";
@@ -16,6 +17,7 @@ import { useSelector } from "react-redux";
 
 const UsersInOrganization = () => {
   const auth = useSelector((state) => state.auth);
+  const { t } = useTranslation();
   const { data, isLoading, isError } = useGetOrgUsers(auth.organization);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
@@ -54,12 +56,12 @@ const UsersInOrganization = () => {
   };
 
   const columnDefsAdmins = [
-    { field: "roles.User", headerName: "Role", flex: 1 },
-    { field: "displayName", headerName: "Display Name", flex: 1 },
-    { field: "username", headerName: "User Name", flex: 1 },
-    { field: "email", headerName: "E-mail", flex: 1 },
-    { field: "organization", headerName: "Organization", flex: 1 },
-    { field: "isActive", headerName: "Active" },
+    { field: "roles.User", headerName: t('role'), flex: 1 },
+    { field: "displayName", headerName: t('displayName'), flex: 1 },
+    { field: "username", headerName: t('userName'), flex: 1 },
+    { field: "email", headerName: t('emailLabel'), flex: 1 },
+    { field: "organization", headerName: t('organization'), flex: 1 },
+    { field: "isActive", headerName: t('active') },
     { field: "_id", hide: true },
     {
       headerName: "Actions",
@@ -102,29 +104,29 @@ const UsersInOrganization = () => {
 
       {/* Delete Modal */}
       <Dialog open={deleteModalOpen} onClose={handleCloseDeleteModal}>
-        <DialogTitle>Delete Confirmation</DialogTitle>
+        <DialogTitle>{t('deleteConfirmation')}</DialogTitle>
         <DialogContent>
-          Are you sure you want to delete{" "}
+          {t('areYouSureToDelete')}{" "}
           {selectedRowData && selectedRowData.username}?
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeleteModal}>Cancel</Button>
+          <Button onClick={handleCloseDeleteModal}>{t('cancel')}</Button>
           <Button onClick={handleConfirmDelete} color="error">
-            Delete
+            {t('delete')}
           </Button>
         </DialogActions>
       </Dialog>
 
       {/* Deactivate Modal */}
       <Dialog open={deactivateModalOpen} onClose={handleCloseDeactivateModal}>
-        <DialogTitle>Deactivate Confirmation</DialogTitle>
+        <DialogTitle>{t('deactivateConfirmation')}</DialogTitle>
         <DialogContent>
-          Are you sure you want to deactivate{" "}
+          {t('areYouSureDeactivate')}{" "}
           {selectedRowData && selectedRowData.username}?
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeactivateModal}>Cancel</Button>
-          <Button onClick={handleConfirmDeactivate}>Deactivate</Button>
+          <Button onClick={handleCloseDeactivateModal}>{t('cancel')}</Button>
+          <Button onClick={handleConfirmDeactivate}>{t('deactivate')}</Button>
         </DialogActions>
       </Dialog>
     </div>

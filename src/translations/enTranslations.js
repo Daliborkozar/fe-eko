@@ -4,7 +4,6 @@ const translationEN = {
     detailData: 'Detail Data',
     feetMeasurement: 'Feet Measurement',
     overview: 'Overview',
-    welcome: "Welcome to my app",
     firstNameRequired: 'First Name is required',
     firstName: 'First Name',
     lastName: 'Last Name',
@@ -29,7 +28,21 @@ const translationEN = {
     generalExamination: 'General Examination',
     optimalWeight: 'Optimal Weight',
     feetParametes: 'Feet Parameters',
+    role: 'Role',
+    displayName: "Display Name",
+    userName: 'User Name',
+    organization: 'Organization',
+    active: 'Active',
+    deleteConfirmation: 'Delete Confimation',
+    areYouSureToDelete: 'Are you sure you want to delete?',
+    delete: 'Delete',
+    cancel: 'Cancel',
+    deactivate: 'Deactivate',
+    deactivateConfirmation: 'Confirm Deaktivaction',
+    areYouSureDeactivate: 'Are you sure you want to deactivate',
+    updateSerialNumber: 'Update serial number'
 }
+
 
 
 export { translationEN }

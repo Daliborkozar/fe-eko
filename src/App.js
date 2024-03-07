@@ -27,14 +27,14 @@ const App = () => {
           <Route index element={<Navigate to="/login"/>} />
           <Route path="patient" element={<InputForm />} />
           <Route path="stepper" element={<StepperHorizontal />} />
-          <Route element={<SuperAdminPrivateRoute token={auth.token} requiredRole={auth.roles[0]} />}>
+          <Route element={<SuperAdminPrivateRoute token={auth?.token} requiredRole={auth?.roles?.[0]} />}>
             <Route path="admintable" element={<AdminList />} />
             <Route path="alluserstable" element={<AllUsersList />} />
           </Route>
-          <Route element={<AdminPrivateRoute token={auth.token} requiredRole={auth.role} />}>
+          <Route element={<AdminPrivateRoute token={auth?.token} requiredRole={auth?.role} />}>
             <Route path=":orgname/users" element={<UsersInOrganization />} />
           </Route>
-          <Route element={<UsersPrivateRoute token={auth.token} requiredRole={auth.role} />}>
+          <Route element={<UsersPrivateRoute token={auth?.token} requiredRole={auth?.role} />}>
             <Route path=":orgname/user" element={<UsersOverview />} />
           </Route>
         </Route>

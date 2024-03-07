@@ -8,6 +8,9 @@ const translationSRB = {
     firstName: 'Ime',
     lastName: 'Prezime',
     identityId: 'Broj Lične Karte',
+    emailLabel: 'E-mail',
+    phoneNumber1: 'Br.Telefona 1',
+    phoneNumber2: 'Br.Telefona 2',
     gender: 'Pol',
     selectGender: 'Birajte Pol',
     male: 'Muški',
@@ -25,7 +28,19 @@ const translationSRB = {
     generalExamination: 'Opšti pregled',
     optimalWeight: 'Optimalna težina',
     feetParametes: 'Parametri Stopala',
-    
+    role: 'Rola',
+    displayName: 'Ime Korisnika',
+    userName: 'Korisnicko ime',
+    organization: 'Organizacija',
+    active: 'Activan',
+    deleteConfirmation: 'Potrvdi Brisanje',
+    areYouSureToDelete: 'Da li ste sigurni da zelite da obrišete?',
+    delete: 'Obriši',
+    cancel: 'Odbaci',
+    deactivate: 'Deaktiviraj',
+    deactivateConfirmation: 'Potrvdi Deaktivaciju',
+    areYouSureDeactivate: 'Da li ste sigurni da želite da deaktivirate',
+    updateSerialNumber: 'Ažurirajte serijski broj'
 }
 
 

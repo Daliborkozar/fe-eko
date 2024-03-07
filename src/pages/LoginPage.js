@@ -48,23 +48,27 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post('/auth', {
+      const response = await axiosInstance.post('/auth/login', {
         user: data.username,
         pwd: data.password,
       });
+
+      console.log(response.data.user._id)
+      // const userApi = await axiosInstance.get('/')
       
+      // const response = await axiosInstance.get
       const userData = response.data;
       console.log(userData, 'user data');
       dispatch(setCredentials({ ...userData, user: data.username }));
-      if(userData.roles[0] === "SuperAdmin"){
-        navigate('/admintable');
-      }
-      if(userData.roles[0] === "Admin"){
-        navigate(`/${userData.organization}/users`);
-      }
-      if(userData.roles[0] === "User"){
-        navigate(`/${userData.organization}/user`);
-      }
+      // if(userData.roles[0] === "SuperAdmin"){
+      //   navigate('/admintable');
+      // }
+      // if(userData.roles[0] === "Admin"){
+      //   navigate(`/${userData.organization}/users`);
+      // }
+      // if(userData.roles[0] === "User"){
+      //   navigate(`/${userData.organization}/user`);
+      // }
       
     } catch (error) {
       // TODO: Handle login error, display an error message, etc.

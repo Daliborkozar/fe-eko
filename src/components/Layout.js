@@ -21,13 +21,13 @@ import { transformObject } from "../utils/transformCreateUser";
 import { StepperHorizontal } from "./forms/Stepper";
 
 const Layout = () => {
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state?.auth);
   const registerUser = useRegisterUser();
   //const [createAdmin] = useCreateAdminMutation();
   const [isModalOpen, setModalOpen] = useState(false);
   const [ispatientModalOpen, setPatientModalOpen] = useState(false);
   console.log(auth, "AUTH INSIDE TOOLBAR");
-  console.log(auth.roles, "ROLES inside toolbar");
+  console.log(auth?.roles, "ROLES inside toolbar");
   const handleOpenModal = () => {
     setModalOpen(true);
   };
@@ -112,7 +112,7 @@ const Layout = () => {
             />
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            {auth?.roles[0] !== "User" ? (
+            {auth?.roles?.[0] !== "User" ? (
               <IconButton aria-label="patient-create" onClick={handleOpenModal}>
                 <PersonAddIcon />
               </IconButton>
@@ -127,7 +127,7 @@ const Layout = () => {
               component="div"
               sx={{ color: "black", marginLeft: "10px" }}
             >
-              {auth.user}
+              {auth?.user}
             </Typography>
             <IconButton
               size="large"
@@ -159,7 +159,7 @@ const Layout = () => {
             paddingBottom: 1,
           }}
         >
-          {auth?.roles[0] === "SuperAdmin" ? "Create Admin" : "Create User"}
+          {auth?.roles?.[0] === "SuperAdmin" ? "Create Admin" : "Create User"}
         </DialogTitle>
         <DialogContent sx={{ marginTop: 2 }}>
           <CreateAdminForm
