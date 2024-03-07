@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from "react-i18next";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import {axiosAuth} from '../api/axios';
@@ -19,6 +20,7 @@ const fetchAdminData = async () => {
 };
 
 const OverviewTable = () => {
+  const { t } = useTranslation();
   const { data, isLoading, isError } = useQuery(['adminData'], fetchAdminData);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
@@ -88,25 +90,25 @@ const OverviewTable = () => {
 
       {/* Delete Modal */}
       <Dialog open={deleteModalOpen} onClose={handleCloseDeleteModal}>
-        <DialogTitle>Delete Confirmation</DialogTitle>
+        <DialogTitle>{t('deleteConfirmation')}</DialogTitle>
         <DialogContent>
-          Are you sure you want to delete {selectedRowData && selectedRowData.username}?
+          {t('areYouSureToDeleteUser')} {selectedRowData && selectedRowData.username}?
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeleteModal}>Cancel</Button>
-          <Button onClick={handleConfirmDelete} color="error">Delete</Button>
+          <Button onClick={handleCloseDeleteModal}>{t('cancel')}</Button>
+          <Button onClick={handleConfirmDelete} color="error">{t('delete')}</Button>
         </DialogActions>
       </Dialog>
 
       {/* Deactivate Modal */}
       <Dialog open={deactivateModalOpen} onClose={handleCloseDeactivateModal}>
-        <DialogTitle>Deactivate Confirmation</DialogTitle>
+        <DialogTitle>{t('deactivateConfirmation')}</DialogTitle>
         <DialogContent>
-          Are you sure you want to deactivate {selectedRowData && selectedRowData.username}?
+          {t('areYouSureDeactivate')} {selectedRowData && selectedRowData.username}?
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeactivateModal}>Cancel</Button>
-          <Button onClick={handleConfirmDeactivate}>Deactivate</Button>
+          <Button onClick={handleCloseDeactivateModal}>{t('cancel')}</Button>
+          <Button onClick={handleConfirmDeactivate}>{t('deactivate')}</Button>
         </DialogActions>
       </Dialog>
     </div>

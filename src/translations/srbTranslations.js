@@ -40,7 +40,8 @@ const translationSRB = {
     deactivate: 'Deaktiviraj',
     deactivateConfirmation: 'Potrvdi Deaktivaciju',
     areYouSureDeactivate: 'Da li ste sigurni da želite da deaktivirate',
-    updateSerialNumber: 'Ažurirajte serijski broj'
+    updateSerialNumber: 'Ažurirajte serijski broj',
+    areYouSureToDeleteUser: 'Da li ste sigurni da zelite obrisati'
 }
 
 

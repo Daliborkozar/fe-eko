@@ -40,7 +40,9 @@ const translationEN = {
     deactivate: 'Deactivate',
     deactivateConfirmation: 'Confirm Deaktivaction',
     areYouSureDeactivate: 'Are you sure you want to deactivate',
-    updateSerialNumber: 'Update serial number'
+    updateSerialNumber: 'Update serial number',
+    areYouSureToDeleteUser: 'Are you sure you want to delete'
+
 }
 
 
