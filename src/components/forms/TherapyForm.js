@@ -104,7 +104,7 @@ const TherapyForm = ({ control, personalData }) => {
           </thead>
           <tbody>
             <TableRow>
-              <TableCell>Ekovel Step Correct size</TableCell>
+              <TableCell>{t('ekovelStepCorrectsize')}</TableCell>
               <TableCell>{defaultRange}</TableCell>
             </TableRow>
             <TableRow>
@@ -116,8 +116,8 @@ const TherapyForm = ({ control, personalData }) => {
               <TableCell>{ulozakData?.finalHeight}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Adjustment interval AI (weeks)</TableCell>
-              <TableCell>1 week</TableCell>
+              <TableCell>{t('adjustmentInterval')} AI</TableCell>
+              <TableCell>1 {t('week')}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>{t('firstCheck')}</TableCell>
@@ -141,7 +141,7 @@ const TherapyForm = ({ control, personalData }) => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TerapyChangeContainer>
-                  <LegDiffLabel>ESC size*:</LegDiffLabel>
+                  <LegDiffLabel>{t('escSize')}*:</LegDiffLabel>
                   <Controller
                     name="therapy.escSize"
                     control={control}
@@ -240,7 +240,7 @@ const TherapyForm = ({ control, personalData }) => {
               </Grid>
               <Grid item xs={12}>
                 <TerapyChangeContainer>
-                  <LegDiffLabel>Serial Number:</LegDiffLabel>
+                  <LegDiffLabel>{t('serialNumber')}:</LegDiffLabel>
 
                   <Controller
                     name="serialNumber"
@@ -251,7 +251,7 @@ const TherapyForm = ({ control, personalData }) => {
                         <TextField
                           type="number"
                           style={{ marginRight: "10px", width: "200px" }}
-                          label="Serial Number"
+                          label={t('serialNumber')}
                           fullWidth
                           {...field}
                         />
@@ -264,7 +264,7 @@ const TherapyForm = ({ control, personalData }) => {
                     control={control}
                     render={({ field }) => (
                       <DatePicker
-                        label="Serial Number Date"
+                        label={t('serialNumberDate')}
                         value={field.value}
                         format="dd/MM/yy"
                         onChange={(date) => field.onChange(date)}
@@ -279,7 +279,7 @@ const TherapyForm = ({ control, personalData }) => {
           </LegDiffContainer>
         </Grid>
         <Grid item xs={12} md={6}>
-          <StyledHeader variant="h6">Check Examination Scheadule</StyledHeader>
+          <StyledHeader variant="h6">{t('checkExaminationSchedule')}</StyledHeader>
           <div style={{ marginBottom: "10px" }}>
             <Controller
               name="therapy.checkdate1"
@@ -287,7 +287,7 @@ const TherapyForm = ({ control, personalData }) => {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  label="checkdate1"
+                  label={t('firstCheck')}
                   value={field.value}
                   format="dd/MM/yy"
                   onChange={(date) => field.onChange(date)}
@@ -304,7 +304,7 @@ const TherapyForm = ({ control, personalData }) => {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  label="Examination Date"
+                  label={t('secondCheck')}
                   value={field.value}
                   format="dd/MM/yy"
                   onChange={(date) => field.onChange(date)}
@@ -321,7 +321,7 @@ const TherapyForm = ({ control, personalData }) => {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  label="Examination Date"
+                  label={t('thirdCheck')}
                   value={field.value}
                   format="dd/MM/yy"
                   onChange={(date) => field.onChange(date)}

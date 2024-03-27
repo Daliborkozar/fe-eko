@@ -129,7 +129,7 @@ const Report = () => {
           }}
         >
           <TextField
-            label="Serial Number"
+            label={t('serialNumber')}
             type="number"
             value={serialNumber}
             onChange={(e) => setSerialNumber(e.target.value)}

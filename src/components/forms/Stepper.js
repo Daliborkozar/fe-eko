@@ -23,7 +23,7 @@ import { useTranslation } from "react-i18next";
 function StepperHorizontal() {
   const { handleSubmit, control, watch } = useForm();
   const { t } = useTranslation();
-  const steps = [t("patientGeneralData"), t('feetMeasurement'), "Overview", "Therapy"];
+  const steps = [t("patientGeneralData"), t('feetMeasurement'), t('overview'), t('therapy')];
   const [activeStep, setActiveStep] = useState(0);
   const navigate = useNavigate();
   
@@ -96,7 +96,7 @@ function StepperHorizontal() {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2, justifyContent: 'center' }}>
             
-            <Button onClick={handleOpenReport} variant="contained">Open Report</Button>
+            <Button onClick={handleOpenReport} variant="contained">{t('saveAndOpenReport')}</Button>
             <Button onClick={handleReset}>Back to patient list</Button>
          </Box>
         </React.Fragment>
@@ -116,7 +116,7 @@ function StepperHorizontal() {
                     onClick={handleBack}
                     sx={{ mr: 1 }}
                   >
-                    Back
+                    {t('back')}
                   </Button>
                   <Box sx={{ flex: "1 1 auto" }} />
                   <Button
@@ -124,7 +124,7 @@ function StepperHorizontal() {
                     onClick={handleNext}
                     // Enable Next for the "Overview" step
                   >
-                    {activeStep === steps.length - 1  ? "Finish" : "Next"}
+                    {activeStep === steps.length - 1  ? t('finish') : t('next')}
                   </Button>
                 </Box>
               </form>

@@ -66,7 +66,7 @@ const FeetForm = ({ control }) => {
             </Grid>
             {/* Detail Data */}
             <Grid item xs={12} md={3}>
-              <StyledHeader variant="h6">Left Foot</StyledHeader>
+              <StyledHeader variant="h6">{t('leftFoot')}</StyledHeader>
               <Controller
                 name="footLengthLeft"
                 control={control}
@@ -75,7 +75,7 @@ const FeetForm = ({ control }) => {
                 render={({ field, fieldState }) => (
                   <TextField
                     type="number"
-                    label="Foot Length(mm)"
+                    label={t('footLength')}
                     fullWidth
                     {...field}
                     error={!!fieldState.error}
@@ -93,7 +93,7 @@ const FeetForm = ({ control }) => {
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
-                    label="Foot Width(mm)"
+                    label={t('footWidth')}
                     fullWidth
                     {...field}
                     style={{ marginBottom: "10px" }}
@@ -153,7 +153,7 @@ const FeetForm = ({ control }) => {
               />
             </Grid>
             <Grid item xs={12} md={3}>
-              <StyledHeader variant="h6">Right Foot</StyledHeader>
+              <StyledHeader variant="h6">{t('rightFoot')}</StyledHeader>
               <Controller
                 name="footLengthRight"
                 control={control}
@@ -162,7 +162,7 @@ const FeetForm = ({ control }) => {
                 render={({ field, fieldState }) => (
                   <TextField
                     type="number"
-                    label="Foot Length(mm)"
+                    label={t('footLength')}
                     fullWidth
                     {...field}
                     error={!!fieldState.error}
@@ -180,7 +180,7 @@ const FeetForm = ({ control }) => {
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
-                    label="Foot Width(mm)"
+                    label={t('footWidth')}
                     fullWidth
                     {...field}
                     style={{ marginBottom: "10px" }}
@@ -244,7 +244,7 @@ const FeetForm = ({ control }) => {
             <Grid item xs={12} md={4}></Grid>
             <Grid item xs={12} md={6}>
               <LegDiffContainer>
-                <LegDiffLabel>Leg Length Difference*:</LegDiffLabel>
+                <LegDiffLabel>{t('legLengthDifference')}*:</LegDiffLabel>
                 <Controller
                   name="legLengthDifference"
                   control={control}
@@ -273,14 +273,14 @@ const FeetForm = ({ control }) => {
                           {...field}
                           displayEmpty
                           renderValue={(selected) =>
-                            selected === "" ? "Select Leg" : selected
+                            selected === "" ? t('selectLeg') : t(selected)
                           }
                         >
                           <MenuItem value="">
-                            <em>Select Leg</em>
+                            <em>{t('selectLeg')}</em>
                           </MenuItem>
-                          <MenuItem value="left">Left</MenuItem>
-                          <MenuItem value="right">Right</MenuItem>
+                          <MenuItem value="left">{t('left')}</MenuItem>
+                          <MenuItem value="right">{t('right')}</MenuItem>
                         </Select>
                       </LegDiffContainer>
                     </FormControl>
@@ -293,7 +293,7 @@ const FeetForm = ({ control }) => {
             <Grid item xs={12} md={4}></Grid>
             <Grid item xs={12} md={6}>
               <LegDiffContainer>
-                <LegDiffLabel>FootPrint Split:</LegDiffLabel>
+                <LegDiffLabel>Foot Print Split:</LegDiffLabel>
                 <Controller
                   name="leftFootprintSplit"
                   control={control}
@@ -301,7 +301,7 @@ const FeetForm = ({ control }) => {
                   render={({ field }) => (
                     <FormControlLabel
                       control={<Checkbox {...field} />}
-                      label="Left"
+                      label={t('left')}
                       
                     />
                   )}
@@ -314,7 +314,7 @@ const FeetForm = ({ control }) => {
                   render={({ field }) => (
                     <FormControlLabel
                       control={<Checkbox {...field} />}
-                      label="Right"
+                      label={t('right')}
                       
                     />
                   )}

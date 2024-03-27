@@ -51,9 +51,26 @@ const translationEN = {
     firstCheck: 'First Check',
     secondCheck: 'Second Check',
     thirdCheck: 'Third Check',
-    therapy: 'Therapy'
+    therapy: 'Therapy',
+    leftFoot: 'Left Foot',
+    rightFoot: 'Right Foot',
+    serialNumber: 'Serial Number',
+    footLength: 'Foot length (mm)',
+    footWidth: 'Foot width (mm)',
+    left: 'Left',
+    right: 'Right',
+    back: 'Back',
+    finish: 'Finish',
+    next: 'Next',
+    selectLeg: 'Select leg',
+    legLengthDifference: 'Leg Length Difference',
+    adjustmentInterval: 'Adjustment Interval',
+    week: 'Week',
+    serialNumberDate: 'Serial number date',
+    checkExaminationSchedule: 'Check Examination Schedule',
+    escSize: 'ESC size',
+    saveAndOpenReport: 'Save and open report'
 }
-
 
 
 export { translationEN }
