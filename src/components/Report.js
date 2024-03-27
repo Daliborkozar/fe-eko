@@ -200,7 +200,7 @@ const Report = () => {
                 <BoldWrapper>City:</BoldWrapper> Zemun
               </NoBorderCell>
             </TableRow>
-          </TableBody>
+          </TableBody>   
         </Table>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <DynamicImage imageName={leftImage} />

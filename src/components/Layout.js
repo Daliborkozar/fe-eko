@@ -27,7 +27,7 @@ const Layout = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [ispatientModalOpen, setPatientModalOpen] = useState(false);
   console.log(auth, "AUTH INSIDE TOOLBAR");
-  console.log(auth?.roles, "ROLES inside toolbar");
+  console.log(auth?.role, "ROLES inside toolbar");
   const handleOpenModal = () => {
     setModalOpen(true);
   };
@@ -112,7 +112,7 @@ const Layout = () => {
             />
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            {auth?.roles?.[0] !== "User" ? (
+            {auth?.user?.role !== "User" ? (
               <IconButton aria-label="patient-create" onClick={handleOpenModal}>
                 <PersonAddIcon />
               </IconButton>
@@ -127,7 +127,7 @@ const Layout = () => {
               component="div"
               sx={{ color: "black", marginLeft: "10px" }}
             >
-              {auth?.user}
+              {auth?.user?.displayName}
             </Typography>
             <IconButton
               size="large"
@@ -159,7 +159,7 @@ const Layout = () => {
             paddingBottom: 1,
           }}
         >
-          {auth?.roles?.[0] === "SuperAdmin" ? "Create Admin" : "Create User"}
+          {auth?.user?.role === "SuperAdmin" ? "Create Admin" : "Create User"}
         </DialogTitle>
         <DialogContent sx={{ marginTop: 2 }}>
           <CreateAdminForm

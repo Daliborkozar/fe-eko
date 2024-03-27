@@ -41,8 +41,17 @@ const translationEN = {
     deactivateConfirmation: 'Confirm Deaktivaction',
     areYouSureDeactivate: 'Are you sure you want to deactivate',
     updateSerialNumber: 'Update serial number',
-    areYouSureToDeleteUser: 'Are you sure you want to delete'
-
+    areYouSureToDeleteUser: 'Are you sure you want to delete',
+    actions: 'Actions',
+    parameter: 'Parameter',
+    value: 'Value',
+    ekovelStepCorrectsize: 'Ekovel Step Correct size',
+    initialHeight: 'Initial Height',
+    optimalHeight: 'Optimal Height',
+    firstCheck: 'First Check',
+    secondCheck: 'Second Check',
+    thirdCheck: 'Third Check',
+    therapy: 'Therapy'
 }
 
 

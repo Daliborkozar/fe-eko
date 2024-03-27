@@ -15,7 +15,7 @@ const CreateAdminForm = ({ handleSubmit, handleCloseModal }) => {
   const { control, handleSubmit: rhfHandleSubmit } = useForm();
   const auth = useSelector((state) => state.auth);
   console.log(auth, 'auth from form')
-  const isDisabled = auth.roles[0] !== 'SuperAdmin';
+  const isDisabled = auth?.user?.role !== 'SuperAdmin';
   const handleCreateClick = (data) => {
     console.log(data);
     handleSubmit(data);
@@ -65,7 +65,7 @@ const CreateAdminForm = ({ handleSubmit, handleCloseModal }) => {
       <Controller
         name="organization"
         control={control}
-        defaultValue={auth.roles[0] === "SuperAdmin" ? "" : auth.organization}
+        defaultValue={auth?.user?.role === "SuperAdmin" ? "" : auth.organization}
         render={({ field }) => (
           <TextField
           disabled={isDisabled}
@@ -90,12 +90,12 @@ const CreateAdminForm = ({ handleSubmit, handleCloseModal }) => {
       <Controller
         name="role"
         control={control}
-        defaultValue={auth.roles[0] === "SuperAdmin" ? "" : "User"}
+        defaultValue={auth?.user?.role === "SuperAdmin" ? "" : "User"}
         render={({ field }) => (
           <FormControl fullWidth sx={{ marginTop: "10px" }}>
-            <InputLabel id="role-label">Role</InputLabel>
-            <Select labelId="role-label" {...field} disabled={isDisabled} >
-              {auth.roles[0] === "SuperAdmin" && (
+            <InputLabel  id="role-label">Role</InputLabel>
+            <Select sx={{ width: "100%", marginTop: "10px" }} labelId="role-label" {...field} disabled={isDisabled} >
+              {auth?.user?.role === "SuperAdmin" && (
                 <MenuItem value="Admin">Admin</MenuItem>
               )}
               <MenuItem value="User">User</MenuItem>

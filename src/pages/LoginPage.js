@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,9 @@ import Logo from '../assets/ekologo.png'
 import { useNavigate } from 'react-router-dom'
 import { axiosInstance } from '../api/axios';
 import { setCredentials } from "../redux/authSlice";
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import CheckIcon from '@mui/icons-material/Check';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -46,6 +49,18 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
+  const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance.post('/auth/login', {
@@ -59,13 +74,16 @@ const LoginPage = () => {
       // const response = await axiosInstance.get
       const userData = response.data;
       console.log(userData, 'user data');
-      dispatch(setCredentials({ ...userData, user: data.username }));
+      dispatch(setCredentials(userData));
       // if(userData.roles[0] === "SuperAdmin"){
       //   navigate('/admintable');
       // }
-      // if(userData.roles[0] === "Admin"){
-      //   navigate(`/${userData.organization}/users`);
-      // }
+       if(userData?.user?.role === "Admin"){
+         navigate(`/${userData.user.organization}/users`);
+       }
+       if(userData?.user?.role === "SuperAdmin"){
+        navigate('/admintable');
+      }
       // if(userData.roles[0] === "User"){
       //   navigate(`/${userData.organization}/user`);
       // }
@@ -79,6 +97,14 @@ const LoginPage = () => {
   return (
     <>
       <MainWrapper />
+      <Snackbar
+        open
+        autoHideDuration={2000}
+        //onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}><Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+        Here is a gentle confirmation that your action was successful.
+      </Alert></Snackbar>
+      
       <LoginCenter>
         <FormContainer onSubmit={handleSubmit(onSubmit)}>
           <img src={Logo} alt="logo" />

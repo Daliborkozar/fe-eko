@@ -11,6 +11,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 import { addMonthsAndAdjustWeekend } from "../../utils/addMonths";
@@ -77,6 +78,7 @@ const TherapyForm = ({ control, personalData }) => {
   //   const regex = /^\d+(\.\d+)?$/;
   //   return regex.test(value);
   // };
+  const { t } = useTranslation()
 
   console.log(personalData)
   const checkDateTable1 =
@@ -96,8 +98,8 @@ const TherapyForm = ({ control, personalData }) => {
         <Table>
           <thead>
             <TableRow>
-              <TableHeader>Parameter</TableHeader>
-              <TableHeader>Value</TableHeader>
+              <TableHeader>{t('parameter')}</TableHeader>
+              <TableHeader>{t('value')}</TableHeader>
             </TableRow>
           </thead>
           <tbody>
@@ -106,11 +108,11 @@ const TherapyForm = ({ control, personalData }) => {
               <TableCell>{defaultRange}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Initial Height IY (mm)</TableCell>
+              <TableCell>{t('initialHeight')} IY (mm)</TableCell>
               <TableCell>{ulozakData?.initialHeight}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Optimal Height OY (mm)</TableCell>
+              <TableCell>{t('optimalHeight')} OY (mm)</TableCell>
               <TableCell>{ulozakData?.finalHeight}</TableCell>
             </TableRow>
             <TableRow>
@@ -118,15 +120,15 @@ const TherapyForm = ({ control, personalData }) => {
               <TableCell>1 week</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>First Check</TableCell>
+              <TableCell>{t('firstCheck')}</TableCell>
               <TableCell>{checkDateTable1}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Second Check</TableCell>
+              <TableCell>{t('secondCheck')}</TableCell>
               <TableCell>{checkDateTable2}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Third Check</TableCell>
+              <TableCell>{t('thirdCheck')}</TableCell>
               <TableCell>{checkDateTable3}</TableCell>
             </TableRow>
           </tbody>
@@ -134,7 +136,7 @@ const TherapyForm = ({ control, personalData }) => {
       </TableContainer>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
-          <StyledHeader variant="h6">Therapy</StyledHeader>
+          <StyledHeader variant="h6">{t('therapy')}</StyledHeader>
           <LegDiffContainer>
             <Grid container spacing={2}>
               <Grid item xs={12}>

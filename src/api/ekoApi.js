@@ -5,7 +5,7 @@ const useGetAdmins = () => {
   const fetchData = async () => {
     try {
       // Use the Axios instance to make the GET request
-      const response = await axiosAuth.get("/superadmin");
+      const response = await axiosAuth.get("/users");
       return response.data;
     } catch (error) {
       throw new Error("Failed to fetch data");
@@ -20,7 +20,7 @@ const useGetAllUsers= () => {
     const fetchData = async () => {
       try {
         // Use the Axios instance to make the GET request
-        const response = await axiosAuth.get("/superadmin/users");
+        const response = await axiosAuth.get("/users");
         return response.data;
       } catch (error) {
         throw new Error("Failed to fetch data");
@@ -52,7 +52,7 @@ const useGetOrgUsers= (org) => {
     const fetchData = async () => {
       try {
         // Use the Axios instance to make the GET request
-        const response = await axiosAuth.get(`/users?org=${org}`);
+        const response = await axiosAuth.get(`/users`);
         return response.data;
       } catch (error) {
         throw new Error("Failed to fetch data");

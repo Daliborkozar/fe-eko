@@ -18,10 +18,12 @@ import { useSelector } from "react-redux";
 const UsersInOrganization = () => {
   const auth = useSelector((state) => state.auth);
   const { t } = useTranslation();
-  const { data, isLoading, isError } = useGetOrgUsers(auth.organization);
+  const { data, isLoading, isError } = useGetOrgUsers();
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deactivateModalOpen, setDeactivateModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
+
+console.log(data, ' data users doktors')
 
   const handleDelete = (rowData) => {
     setDeleteModalOpen(true);
@@ -64,7 +66,7 @@ const UsersInOrganization = () => {
     { field: "isActive", headerName: t('active') },
     { field: "_id", hide: true },
     {
-      headerName: "Actions",
+      headerName: t("actions"),
       cellRenderer: (params) => (
         <>
           <DeleteIcon
@@ -88,7 +90,7 @@ const UsersInOrganization = () => {
     return <div>Error loading admin data: {isError.message}</div>;
   }
 
-  const rowData = data || [];
+  const rowData = data.users || [];
 
   return (
     <div>

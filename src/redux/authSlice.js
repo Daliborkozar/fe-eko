@@ -9,26 +9,29 @@ const authSlice = createSlice({
   initialState: {
     user: storedAuthData ? storedAuthData.user : null,
     token: storedAuthData ? storedAuthData.accessToken : null,
-    roles: storedAuthData ? storedAuthData.roles : null,
+    role: storedAuthData ? storedAuthData.role : null,
     organization: storedAuthData ? storedAuthData.organization : null,
   },
   reducers: {
     setCredentials: (state, action) => {
-      const { user, accessToken, roles, organization } = action.payload;
+      const { user, accessToken } = action.payload;
       state.user = user;
       state.token = accessToken;
-      state.roles = roles;
-      state.organization = organization;
+      state.role = user.role;
+      state.organization = user.organization;
 
       localStorage.setItem("authData", JSON.stringify(action.payload));
     },
     logOut: (state, action) => {
       state.user = null;
       state.token = null;
+      state.role = null;
+      state.organization = null;
       localStorage.removeItem("authData");
     }
   },
 });
+
 
 export const { setCredentials, logOut } = authSlice.actions;
 

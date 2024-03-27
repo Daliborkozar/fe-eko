@@ -108,7 +108,7 @@ const AllUsersList = () => {
     return <div>Error loading admin data: {isError.message}</div>;
   }
 
-  const rowData = data || [];
+  const rowData = data.users || [];
 
   return (
     <div>

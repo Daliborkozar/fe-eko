@@ -41,7 +41,17 @@ const translationSRB = {
     deactivateConfirmation: 'Potrvdi Deaktivaciju',
     areYouSureDeactivate: 'Da li ste sigurni da želite da deaktivirate',
     updateSerialNumber: 'Ažurirajte serijski broj',
-    areYouSureToDeleteUser: 'Da li ste sigurni da zelite obrisati'
+    areYouSureToDeleteUser: 'Da li ste sigurni da zelite obrisati',
+    actions: 'Akcije korisnika',
+    parameter: 'Parametar',
+    value: 'Vrednost',
+    ekovelStepCorrectsize: 'Ekovel Step Correct size',
+    initialHeight: 'Inicijalna Visina',
+    optimalHeight: 'Optimalna Visina',
+    firstCheck: 'Prvi pregled',
+    secondCheck: 'Drugi pregled',
+    thirdCheck: 'Treci pregled',
+    therapy: 'Terapija'
 }
 
 
